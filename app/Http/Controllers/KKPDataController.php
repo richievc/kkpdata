@@ -57,7 +57,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step2/' . $data->id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step2/' . $data->id);
     }
 
     public function process_edit_step1(Request $request, $id) {
@@ -75,7 +75,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step2/' . $data->id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step2/' . $data->id);
     }
 
     /**
@@ -106,7 +106,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step3/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step3/' . $id);
     }
 
     /**
@@ -137,7 +137,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step4/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step4/' . $id);
     }
 
     /**
@@ -170,7 +170,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step5/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step5/' . $id);
     }
 
     /**
@@ -200,7 +200,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step6/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step6/' . $id);
     }
 
     /**
@@ -240,7 +240,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step7/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step7/' . $id);
     }
 
     /**
@@ -272,7 +272,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step8/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step8/' . $id);
     }
 
     /**
@@ -303,7 +303,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step9/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step9/' . $id);
     }
 
     /**
@@ -333,7 +333,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step10/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step10/' . $id);
     }
 
     /**
@@ -362,7 +362,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step11/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step11/' . $id);
     }
 
 
@@ -405,7 +405,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step12/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step12/' . $id);
     }
 
     public function step12($id) {
@@ -477,7 +477,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step13/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step13/' . $id);
     }
 
 
@@ -499,7 +499,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step14/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step14/' . $id);
     }
 
 
@@ -538,7 +538,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step15/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step15/' . $id);
     }
 
 
@@ -569,7 +569,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step16/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/step16/' . $id);
     }
 
 
@@ -602,7 +602,7 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('home');
+        return redirect()->to(Request()->segment(1) . '/home');
     }
 
     /**
@@ -625,7 +625,7 @@ class KKPDataController extends Controller
             $data->$file = null;
             $data->save();
         }
-        return redirect()->to('kkpdata/' . $section . '/' . $id);
+        return redirect()->to(Request()->segment(1) . '/kkpdata/' . $section . '/' . $id);
     }
 
 

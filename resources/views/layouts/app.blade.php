@@ -83,7 +83,7 @@
         </div>
     </nav>
     <div class="container" style="text-align: center">
-        <img src="images/cis-floridabluelogo.png" />
+        <img src="{{url('images/flbluelogo.png')}}" />
     </div>
     @yield('content')
 </div>

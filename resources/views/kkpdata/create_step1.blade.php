@@ -24,7 +24,7 @@
         </p>
     </div>
     <hr>
-    <form action="{{url('kkpdata/process_' . (!empty($account['id']) ? 'edit_' : '') . 'step1/' . (!empty($account['id']) ? $account['id'] : ''))}}" method="post" class="form-horizontal">
+    <form action="{{url(Request::segment(1) . '/kkpdata/process_' . (!empty($account['id']) ? 'edit_' : '') . 'step1/' . (!empty($account['id']) ? $account['id'] : ''))}}" method="post" class="form-horizontal">
         {!! csrf_field() !!}
 
         <fieldset>
