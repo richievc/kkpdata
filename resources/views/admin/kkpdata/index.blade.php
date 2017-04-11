@@ -43,20 +43,31 @@
                     <table class="table" id="example3" >
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Slug</th>
-                            <th>Published</th>
-                            <th>Publish Date</th>
+                            <th>Facility</th>
+                            <th>Main Telephone</th>
+                            <th>Point of Contact</th>
+                            <th>POC Phone</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @if(!$accounts)
+
+                        @if(count($accounts) < 1)
                             <div class="alert alert-danger">No Accounts Found</div>
                         @else
-                            @foreach ($accounts as $blog)
 
-
+                            @foreach ($accounts as $data)
+                                <tr>
+                                    <td>{{$data->facility}}</td>
+                                    <td>{{$data->main_phone}}</td>
+                                    <td>{{($data->is_point_of_contact == 0 ? $data->your_name : $data->point_of_contact_name)}}</td>
+                                    <td>{{($data->is_point_of_contact == 0 ? $data->your_phone : $data->point_of_contact_phone)}}</td>
+                                    <td>
+                                        <a href="{{url('admin/kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                    </td>
+                                </tr>
                             @endforeach
                         @endif
                         </tbody>

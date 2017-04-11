@@ -1,19 +1,9 @@
-@extends('backpack::layout')
-
-@section('header')
-    <section class="content-header">
-        <h1>
-            KKPDATA<small> Create Accounts</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{ url(config('backpack.base.route_prefix', 'admin')) }}">Home</a></li>
-            <li class="active">KKPData</li>
-            <li class="active">Step 1</li>
-        </ol>
-    </section>
-@endsection
+@extends('layouts.app')
 
 @section('content')
+    <div class="container theme-showcase" role="main">
+        <div class="row">
+            <div class="col-md-12">
     <h2>PRE-SURVEY SECURITY QUESTIONNAIRE</h2>
     <div class="alert alert-default">
         <p>
@@ -34,7 +24,7 @@
         </p>
     </div>
     <hr>
-    <form action="{{url('admin/kkpdata/process_' . (!empty($account['id']) ? 'edit_' : '') . 'step1/' . (!empty($account['id']) ? $account['id'] : ''))}}" method="post" class="form-horizontal">
+    <form action="{{url('kkpdata/process_' . (!empty($account['id']) ? 'edit_' : '') . 'step1/' . (!empty($account['id']) ? $account['id'] : ''))}}" method="post" class="form-horizontal">
         {!! csrf_field() !!}
 
         <fieldset>
@@ -119,14 +109,15 @@
             <div class="form-group">
                 <div class="col-md-8">
                     <button id="continue" name="continue" class="btn btn-primary pull-right">Continue</button>
-                    <a href="{{ url(config('backpack.base.route_prefix', 'admin')) }}/kkpdata" id="previous" name="previous" class="btn btn-default pull-right">Previous</a>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
-
+            </div>
+        </div>
+    </div>
 
 
 

@@ -123,6 +123,8 @@
     <script src="{{ asset('vendor/adminlte') }}/plugins/pace/pace.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
+    <script src="{{ asset('vendor/adminlte') }}/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="{{ asset('vendor/adminlte') }}/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
     <script>
         var AdminLTEOptions = {
@@ -137,7 +139,6 @@
         };
     </script>
 
-
     <script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
 
     <!-- page script -->
@@ -147,10 +148,10 @@
 
         // Ajax calls should always have the CSRF token attached to them, otherwise they won't work
         $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         // Set active state on menu element
         var current_url = "{{ Request::url() }}";
@@ -161,6 +162,14 @@
           }
         });
     </script>
+
+    <!-- SET MASK DEFAULTS -->
+    <script>
+        $(document).ready(function(){
+            $('.phone').inputmask({"mask": "999-999-9999"});
+        });
+    </script>
+
 
     @include('backpack::inc.alerts')
 

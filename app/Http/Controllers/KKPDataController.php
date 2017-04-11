@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\KKPDataModel;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
+use App\Models\KKPdataModel;
 
-
-class AdminKKPDataController extends Controller
+class KKPDataController extends Controller
 {
 
     var $uploadDir = 'uploads/kkpdata/';
@@ -18,10 +14,10 @@ class AdminKKPDataController extends Controller
      * @desc: Displays the Table view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-     public function index() {
-         $data['accounts'] = KKPDataModel::all();
-         return view('admin/kkpdata/index', $data);
-     }
+    public function index() {
+        $data['accounts'] = KKPDataModel::all();
+        return view('kkpdata/index', $data);
+    }
 
     /**
      * @desc: Step 1 - Background Information
@@ -29,7 +25,7 @@ class AdminKKPDataController extends Controller
      */
     public function create_step1() {
         $data['account'] = array();
-        return view('admin/kkpdata/create_step1', $data);
+        return view('kkpdata/create_step1', $data);
     }
 
     /**
@@ -38,7 +34,7 @@ class AdminKKPDataController extends Controller
      */
     public function edit_step1($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step1', $data);
+        return view('kkpdata/create_step1', $data);
     }
 
     /**
@@ -61,7 +57,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step2/' . $data->id);
+        return redirect()->to('kkpdata/step2/' . $data->id);
     }
 
     public function process_edit_step1(Request $request, $id) {
@@ -79,7 +75,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step2/' . $data->id);
+        return redirect()->to('kkpdata/step2/' . $data->id);
     }
 
     /**
@@ -89,7 +85,7 @@ class AdminKKPDataController extends Controller
      */
     public function step2($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step2', $data);
+        return view('kkpdata/create_step2', $data);
     }
 
     /**
@@ -110,7 +106,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step3/' . $id);
+        return redirect()->to('kkpdata/step3/' . $id);
     }
 
     /**
@@ -120,7 +116,7 @@ class AdminKKPDataController extends Controller
      */
     public function step3($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step3', $data);
+        return view('kkpdata/create_step3', $data);
     }
 
     /**
@@ -141,7 +137,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step4/' . $id);
+        return redirect()->to('kkpdata/step4/' . $id);
     }
 
     /**
@@ -151,7 +147,7 @@ class AdminKKPDataController extends Controller
      */
     public function step4($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step4', $data);
+        return view('kkpdata/create_step4', $data);
     }
 
     /**
@@ -174,7 +170,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step5/' . $id);
+        return redirect()->to('kkpdata/step5/' . $id);
     }
 
     /**
@@ -184,7 +180,7 @@ class AdminKKPDataController extends Controller
      */
     public function step5($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step5', $data);
+        return view('kkpdata/create_step5', $data);
     }
 
     /**
@@ -204,7 +200,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step6/' . $id);
+        return redirect()->to('kkpdata/step6/' . $id);
     }
 
     /**
@@ -214,7 +210,7 @@ class AdminKKPDataController extends Controller
      */
     public function step6($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step6', $data);
+        return view('kkpdata/create_step6', $data);
     }
 
 
@@ -244,7 +240,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step7/' . $id);
+        return redirect()->to('kkpdata/step7/' . $id);
     }
 
     /**
@@ -254,7 +250,7 @@ class AdminKKPDataController extends Controller
      */
     public function step7($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step7', $data);
+        return view('kkpdata/create_step7', $data);
     }
 
     /**
@@ -276,7 +272,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step8/' . $id);
+        return redirect()->to('kkpdata/step8/' . $id);
     }
 
     /**
@@ -286,7 +282,7 @@ class AdminKKPDataController extends Controller
      */
     public function step8($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step8', $data);
+        return view('kkpdata/create_step8', $data);
     }
 
 
@@ -307,7 +303,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step9/' . $id);
+        return redirect()->to('kkpdata/step9/' . $id);
     }
 
     /**
@@ -317,7 +313,7 @@ class AdminKKPDataController extends Controller
      */
     public function step9($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step9', $data);
+        return view('kkpdata/create_step9', $data);
     }
 
     /**
@@ -337,7 +333,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step10/' . $id);
+        return redirect()->to('kkpdata/step10/' . $id);
     }
 
     /**
@@ -347,7 +343,7 @@ class AdminKKPDataController extends Controller
      */
     public function step10($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step10', $data);
+        return view('kkpdata/create_step10', $data);
     }
 
     /**
@@ -366,7 +362,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step11/' . $id);
+        return redirect()->to('kkpdata/step11/' . $id);
     }
 
 
@@ -377,7 +373,7 @@ class AdminKKPDataController extends Controller
      */
     public function step11($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step11', $data);
+        return view('kkpdata/create_step11', $data);
     }
 
     /**
@@ -409,12 +405,12 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step12/' . $id);
+        return redirect()->to('kkpdata/step12/' . $id);
     }
 
     public function step12($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step12', $data);
+        return view('kkpdata/create_step12', $data);
     }
 
     public function process_step12(Request $request, $id)
@@ -481,14 +477,14 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step13/' . $id);
+        return redirect()->to('kkpdata/step13/' . $id);
     }
 
 
 
     public function step13($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step13', $data);
+        return view('kkpdata/create_step13', $data);
     }
 
 
@@ -503,14 +499,14 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step14/' . $id);
+        return redirect()->to('kkpdata/step14/' . $id);
     }
 
 
 
     public function step14($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step14', $data);
+        return view('kkpdata/create_step14', $data);
     }
 
 
@@ -542,7 +538,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step15/' . $id);
+        return redirect()->to('kkpdata/step15/' . $id);
     }
 
 
@@ -551,7 +547,7 @@ class AdminKKPDataController extends Controller
 
     public function step15($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step15', $data);
+        return view('kkpdata/create_step15', $data);
     }
 
 
@@ -573,13 +569,13 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/step16/' . $id);
+        return redirect()->to('kkpdata/step16/' . $id);
     }
 
 
     public function step16($id) {
         $data['account'] = KKPDataModel::find($id);
-        return view('admin/kkpdata/create_step16', $data);
+        return view('kkpdata/create_step16', $data);
     }
 
     public function process_step16(Request $request, $id)
@@ -606,7 +602,7 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/');
+        return redirect()->to('home');
     }
 
     /**
@@ -629,14 +625,8 @@ class AdminKKPDataController extends Controller
             $data->$file = null;
             $data->save();
         }
-        return redirect()->to('admin/kkpdata/' . $section . '/' . $id);
+        return redirect()->to('kkpdata/' . $section . '/' . $id);
     }
-
-
-
-
-
-
 
 
 

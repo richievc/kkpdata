@@ -27,6 +27,14 @@ class AddUsersToTable extends Migration
             'active'        => 1,
         ]);
 
+        DB::table('users')->insert([
+            'name'          => 'Craig Gundry',
+            'email'         => 'gundrycs@cisworldservices.org',
+            'username'      => 'gundrycs',
+            'password'      => bcrypt('Secure$101'),
+            'active'        => 1,
+        ]);
+
     }
 
     /**
