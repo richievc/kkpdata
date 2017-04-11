@@ -10,7 +10,7 @@
 
 Auth::routes();
 
-Route::get('guidewell/home', 'KKPDataController@index');
+Route::get('home', 'KKPDataController@index');
 
 Route::group ([ 'prefix' => 'guidewell' ], function () {
     /**
