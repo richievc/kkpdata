@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KKPdataModel;
+use App\Models\KKPDataModel;
 
 class KKPDataController extends Controller
 {
