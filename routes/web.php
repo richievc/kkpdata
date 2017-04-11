@@ -13,6 +13,9 @@ Auth::routes();
 Route::get('home', function() {
     return redirect()->to('guidewell/home');
 });
+Route::get('guidewell', function() {
+    return redirect()->to('guidewell/home');
+});
 
 Route::group ([ 'prefix' => 'guidewell' ], function () {
     /**
