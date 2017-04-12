@@ -6,7 +6,7 @@
             <div class="col-md-12">
     <h2>PRE-SURVEY SECURITY QUESTIONNAIRE</h2>
 
-    <form action="{{url(Request::segment(1) . '/kkpdata/process_step9/' . $account['id'])}}" method="post" class="form-horizontal">
+    <form action="{{url('kkpdata/process_step9/' . $account['id'])}}" method="post" class="form-horizontal">
         {!! csrf_field() !!}
         <input type="hidden" name="id" value="{{$account['id']}}">
         <fieldset>
@@ -55,7 +55,7 @@
             <div class="form-group">
                 <div class="col-md-8">
                     <button id="continue" name="continue" class="btn btn-primary pull-right">Continue</button>
-                    <a href="{{ url(Request::segment(1) . '/kkpdata/step8/' . $account['id'])}}" id="previous" name="previous" class="btn btn-default pull-right">Previous</a>
+                    <a href="{{ url('kkpdata/step8/' . $account['id'])}}" id="previous" name="previous" class="btn btn-default pull-right">Previous</a>
                 </div>
             </div>
 

@@ -50,7 +50,7 @@
                                             <td>{{($data->is_point_of_contact == 0 ? $data->your_name : $data->point_of_contact_name)}}</td>
                                             <td>{{($data->is_point_of_contact == 0 ? $data->your_phone : $data->point_of_contact_phone)}}</td>
                                             <td>
-                                                <a href="{{url(Request::segment(1) . '/kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
+                                                <a href="{{url('kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
                                             </td>
