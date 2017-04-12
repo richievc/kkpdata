@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-4 col-md-offset-4" style="margin-top: 30px;">
             <div class="box box-default" style="
-            	border: 5px solid #111; 
+            	border: 5px solid #111;
             	border-radius: 10px;
             	background: rgba(48,48,48,0.7);
             ">

@@ -56,7 +56,8 @@
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
-                                </a>
+                                </a><br>
+                                First Time here: <a class="btn btn-link" href="register">Register</a>
                             </div>
                         </div>
                     </form>
