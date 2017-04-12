@@ -82,6 +82,10 @@ Route::post ( 'kkpdata/process_step15/{id}', 'KKPDataController@process_step15' 
 Route::get ( 'kkpdata/step16/{id}', 'KKPDataController@step16' );
 Route::post ( 'kkpdata/process_step16/{id}', 'KKPDataController@process_step16' );
 
+// STEP 17
+Route::get ( 'kkpdata/step17/{id}', 'KKPDataController@step17' );
+Route::post ( 'kkpdata/process_step17/{id}', 'KKPDataController@process_step17' );
+
 
 
 

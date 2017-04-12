@@ -602,8 +602,62 @@ class KKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
+        return redirect()->to('kkpdata/step17/' . $id);
+    }
+
+
+    public function step17($id) {
+        $data['account'] = KKPDataModel::find($id);
+        return view('kkpdata/create_step17', $data);
+    }
+
+    public function process_step17(Request $request, $id)
+    {
+
+        $data = KKPDataModel::find($id);
+        // Emergency Preparations
+
+        $data->building_name1              = $request->building_name1;
+        $data->no_of_floor_plans1              = $request->no_of_floor_plans1;
+        if ($request->file('floor_plans1_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans1_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans1_file = $name;
+        }
+
+        $data->building_name2              = $request->building_name2;
+        $data->no_of_floor_plans2              = $request->no_of_floor_plans2;
+        if ($request->file('floor_plans2_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans2_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans2_file = $name;
+        }
+
+        $data->building_name3              = $request->building_name3;
+        $data->no_of_floor_plans3              = $request->no_of_floor_plans3;
+        if ($request->file('floor_plans3_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans3_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans3_file = $name;
+        }
+
+        $data->save();
+
+        \Session::flash('success-msg', 'Data was save successfully');
         return redirect()->to('home');
     }
+
+
+
 
     /**
      * @desc: Deletes file form section
