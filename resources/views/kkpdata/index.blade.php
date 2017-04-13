@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h4> <span class="semi-bold">Accounts</span></h4>
+                            <h4> <span class="semi-bold">Facilities</span></h4>
                         </div>
                     </div>
                     <div class="panel-body ">
@@ -24,7 +24,7 @@
                         @endif
 
                         <a href="kkpdata/create_account">
-                            <button class="btn btn-primary"  style="margin-bottom:20px" id="create_account">Create Account</button>
+                            <button class="btn btn-primary"  style="margin-bottom:20px" id="create_account"><i class="fa fa-building-o"></i> Create a Facility</button>
                         </a>
 
                             <table class="table" id="example3" >
