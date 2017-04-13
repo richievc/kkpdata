@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KKPDataModel;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class KKPDataController extends Controller
 {
@@ -15,6 +18,13 @@ class KKPDataController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
+
+        $user = Auth::user();
+
+        if($user->hasRole('Manager')) {
+            return redirect('kkpdata/create_account');
+        }
+
         $data['accounts'] = KKPDataModel::all();
         return view('kkpdata/index', $data);
     }

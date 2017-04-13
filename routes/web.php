@@ -14,7 +14,6 @@ Auth::routes();
  * KKPData Routes
  */
 
-
 Route::get('home', 'KKPDataController@index');
 
 // STEP 1
