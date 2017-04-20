@@ -3,7 +3,9 @@
 @section('content')
     <div class="container theme-showcase" role="main">
         <div class="row">
-            <div class="col-md-12">
+            {!! view('kkpdata/partials/side_menu', compact('account')) !!}
+
+            <div class="col-md-8">
     <h2>PRE-SURVEY SECURITY QUESTIONNAIRE</h2>
 
     <form action="{{url('kkpdata/process_step4/' . $account['id'])}}" method="post" class="form-horizontal">

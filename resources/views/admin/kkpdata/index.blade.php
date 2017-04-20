@@ -66,6 +66,9 @@
                                         <a href="{{url('admin/kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
+                                        <a href="{{url('admin/kkpdata/delete/' . $data->id)}}" class="btn btn-xs btn-danger">
+                                            <i class="fa fa-edit"></i> Delete
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

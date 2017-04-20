@@ -606,7 +606,134 @@ class AdminKKPDataController extends Controller
         $data->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('admin/kkpdata/');
+        return redirect()->to('admin/kkpdata/step17/' . $id);
+    }
+
+    public function step17($id) {
+        $data['account'] = KKPDataModel::find($id);
+        return view('admin/kkpdata/create_step17', $data);
+    }
+
+    public function process_step17(Request $request, $id)
+    {
+
+        $data = KKPDataModel::find($id);
+        // Emergency Preparations
+
+        $data->building_name1              = $request->building_name1;
+        $data->no_of_floor_plans1              = $request->no_of_floor_plans1;
+        if ($request->file('floor_plans1_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans1_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans1_file = $name;
+        }
+
+        $data->building_name2              = $request->building_name2;
+        $data->no_of_floor_plans2              = $request->no_of_floor_plans2;
+        if ($request->file('floor_plans2_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans2_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans2_file = $name;
+        }
+
+        $data->building_name3              = $request->building_name3;
+        $data->no_of_floor_plans3              = $request->no_of_floor_plans3;
+        if ($request->file('floor_plans3_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans3_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans3_file = $name;
+        }
+
+        $data->building_name4              = $request->building_name4;
+        $data->no_of_floor_plans4              = $request->no_of_floor_plans4;
+        if ($request->file('floor_plans4_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans4_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans4_file = $name;
+        }
+
+        $data->building_name5              = $request->building_name5;
+        $data->no_of_floor_plans5              = $request->no_of_floor_plans5;
+        if ($request->file('floor_plans5_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans5_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans5_file = $name;
+        }
+
+        $data->building_name6              = $request->building_name6;
+        $data->no_of_floor_plans6              = $request->no_of_floor_plans6;
+        if ($request->file('floor_plans6_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans6_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans6_file = $name;
+        }
+
+        $data->building_name7              = $request->building_name7;
+        $data->no_of_floor_plans7              = $request->no_of_floor_plans7;
+        if ($request->file('floor_plans7_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans7_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans7_file = $name;
+        }
+
+        $data->building_name8              = $request->building_name8;
+        $data->no_of_floor_plans8              = $request->no_of_floor_plans8;
+        if ($request->file('floor_plans8_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans8_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans8_file = $name;
+        }
+
+        $data->building_name9              = $request->building_name9;
+        $data->no_of_floor_plans9              = $request->no_of_floor_plans9;
+        if ($request->file('floor_plans9_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans9_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans9_file = $name;
+        }
+
+        $data->building_name10              = $request->building_name10;
+        $data->no_of_floor_plans10              = $request->no_of_floor_plans10;
+        if ($request->file('floor_plans10_file')) {
+            $destinationPath = public_path('uploads/kkpdata/' . $id);
+            $file = $request->file('floor_plans10_file');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $data->floor_plans10_file = $name;
+        }
+
+        $data->save();
+
+        \Session::flash('success-msg', 'Data was save successfully');
+        return redirect()->to('admin/kkpdata');
     }
 
     /**
@@ -632,7 +759,14 @@ class AdminKKPDataController extends Controller
         return redirect()->to('admin/kkpdata/' . $section . '/' . $id);
     }
 
+    public function delete($id) {
 
+        $data = KKPDataModel::find($id);
+        $destinationPath = public_path('uploads/kkpdata/' . $id);
+        Storage::deleteDirectory($destinationPath);
+
+       // return redirect()->to('admin/kkpdata/');
+    }
 
 
 
