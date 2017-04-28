@@ -40,7 +40,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['threatening_behavior_policy_file']))
                         FileName: {{$account['threatening_behavior_policy_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step14/threatening_behavior_policy_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step14/threatening_behavior_policy_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="threatening_behavior_policy_file" id="threatening_behavior_policy_file" >
                     @endif
@@ -71,7 +71,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['assessment_and_management_plan_file']))
                         FileName: {{$account['assessment_and_management_plan_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step14/assessment_and_management_plan_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step14/assessment_and_management_plan_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="assessment_and_management_plan_file" id="assessment_and_management_plan_file" >
                     @endif

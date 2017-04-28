@@ -59,12 +59,12 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="pharmacy_onsite-0">
                         <input type="radio" name="pharmacy_onsite" id="pharmacy_onsite-0" value="yes"
-                                {{($account['pharmacy_onsite'] == 1 ? 'checked' : '')}}>
+                            {{($account['pharmacy_onsite'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="pharmacy_onsite-1">
                         <input type="radio" name="pharmacy_onsite" id="pharmacy_onsite-1" value="no"
-                                {{($account['pharmacy_onsite'] == 0 ? 'checked' : '')}}>
+                            {{($account['pharmacy_onsite'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
                 </div>

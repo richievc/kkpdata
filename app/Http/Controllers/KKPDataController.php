@@ -249,6 +249,7 @@ class KKPDataController extends Controller
         $data->history_of_nuisance              = $request->history_of_nuisance;
         $data->has_panic_alarms                 = $request->has_panic_alarms == 'yes' ? 1 : 0;;
         $data->panic_alarm_activated            = $request->panic_alarm_activated;
+        $data->panic_alarm_investigated         = $request->panic_alarm_investigated;
         $data->onsite_cctv                      = $request->onsite_cctv;
         $data->where_monitors_located           = $request->where_monitors_located;
 

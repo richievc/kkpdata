@@ -53,7 +53,7 @@
                                 <div class="col-md-4">
                                     @if(!empty($account['floor_plans' . $i . '_file']))
                                         FileName: {{$account['floor_plans' . $i .'_file']}}
-                                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step17/floor_plans' . $i . '_file')}}"><i class="fa fa-trash"></i></a>
+                                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step17/floor_plans' . $i . '_file')}}"><i class="fa fa-trash"></i> Delete</a>
                                     @else
                                         <input type="file" name="floor_plans{{$i}}_file" id="floor_plans{{$i}}_file" >
                                     @endif

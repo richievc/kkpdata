@@ -109,7 +109,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['guidelines_for_termination_file']))
                         FileName: {{$account['guidelines_for_termination_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step11/guidelines_for_termination_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step11/guidelines_for_termination_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="guidelines_for_termination_file" id="guidelines_for_termination_file" >
                     @endif

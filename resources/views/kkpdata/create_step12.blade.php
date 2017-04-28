@@ -41,7 +41,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['visitor_procedures_access_file']))
                         FileName: {{$account['visitor_procedures_access_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/visitor_procedures_access_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/visitor_procedures_access_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="visitor_procedures_access_file" id="visitor_procedures_access_file" >
                     @endif
@@ -72,7 +72,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['employee_access_file']))
                         FileName: {{$account['employee_access_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/employee_access_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/employee_access_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="employee_access_file" id="employee_access_file" >
                     @endif
@@ -103,7 +103,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['contractor_access_file']))
                         FileName: {{$account['contractor_access_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/contractor_access_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/contractor_access_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="contractor_access_file" id="contractor_access_file" >
                     @endif
@@ -133,7 +133,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['electronic_access_control_file']))
                         FileName: {{$account['electronic_access_control_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/electronic_access_control_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/electronic_access_control_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="electronic_access_control_file" id="electronic_access_control_file" >
                     @endif
@@ -163,7 +163,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['written_key_control_policy_file']))
                         FileName: {{$account['written_key_control_policy_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/written_key_control_policy_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step12/written_key_control_policy_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="written_key_control_policy_file" id="written_key_control_policy_file" >
                     @endif

@@ -26,16 +26,31 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="public_address_system-0">
                         <input type="radio" name="public_address_system" id="public_address_system-0" value="phone"
-                                {{($account['public_address_system'] == 'phone' ? 'checked' : '')}}>
+                            {{($account['public_address_system'] == 'phone' ? 'checked' : '')}}>
                         Phone
                     </label>
                     <label class="checkbox-inline" for="public_address_system-1">
                         <input type="radio" name="public_address_system" id="public_address_system-1" value="analog"
-                                {{($account['public_address_system'] == 'analog' ? 'checked' : '')}}>
+                            {{($account['public_address_system'] == 'analog' ? 'checked' : '')}}>
                         Analog/hardwired
+                    </label>
+                    <label class="checkbox-inline" for="public_address_system-2">
+                        <input type="radio" name="public_address_system" id="public_address_system-2" value="none"
+                            {{($account['public_address_system'] == 'none' ? 'checked' : '')}}>
+                        None
                     </label>
                 </div>
             </div>
+            
+             <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="type_of_system">
+                    PA System Notes? </label>
+                <div class="col-md-4">
+                    <textarea id="pa_system_notes" name="pa_system_notes" class="form-control">{{$account['pa_system_notes']}}</textarea>
+                </div>
+            </div>
+            
 
             <h3>Access Control</h3>
 
@@ -68,7 +83,9 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="system_enrollment">
-                    If YES, how is system enrollment?  </label>
+                    If YES, how is system enrollment? 
+                    (card issue, biometric enrollment) managed and who is responsible for administration
+                </label>
                 <div class="col-md-4">
                     <textarea id="system_enrollment" name="system_enrollment" class="form-control">{{$account['system_enrollment']}}</textarea>
                 </div>

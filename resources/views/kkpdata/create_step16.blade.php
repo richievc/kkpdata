@@ -50,7 +50,7 @@
                 <div class="col-md-4">
                     @if(!empty($account['responsible_for_authoring_employees_file']))
                         FileName: {{$account['responsible_for_authoring_employees_file']}}
-                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step16/assessment_and_management_plan_file')}}"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/kkpdata/delete/'.$account['id'].'/step16/assessment_and_management_plan_file')}}"><i class="fa fa-trash"></i> Delete</a>
                     @else
                         <input type="file" name="assessment_and_management_plan_file" id="assessment_and_management_plan_file" >
                     @endif
