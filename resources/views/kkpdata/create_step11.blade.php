@@ -29,7 +29,7 @@
                     </label>
                     <label class="checkbox-inline" for="employees_subjected_to_background_checks-1">
                         <input type="radio" name="employees_subjected_to_background_checks" id="employees_subjected_to_background_checks-1" value="no"
-                                {{($account['employees_subjected_to_background_checks'] == 'nome' ? 'checked' : '')}}>
+                                {{($account['employees_subjected_to_background_checks'] == 'no' ? 'checked' : '')}}>
                         No
                     </label>
                     <label class="checkbox-inline" for="employees_subjected_to_background_checks-2">
@@ -55,12 +55,12 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="employees_criminal_history-0">
                         <input type="radio" name="employees_criminal_history" id="employees_criminal_history-0" value="yes"
-                                {{($account['employees_criminal_history'] == 1 ? 'checked' : '')}}>
+                       		{{($account['employees_criminal_history'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="employees_criminal_history-1">
                         <input type="radio" name="employees_criminal_history" id="employees_criminal_history-1" value="no"
-                                {{($account['employees_criminal_history'] == 0 ? 'checked' : '')}}>
+                       		{{($account['employees_criminal_history'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
                 </div>
@@ -72,12 +72,12 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="previous_employer_verifications-0">
                         <input type="radio" name="previous_employer_verifications" id="previous_employer_verifications-0" value="yes"
-                                {{($account['"previous_employer_verifications'] == 1 ? 'checked' : '')}}>
+                   			{{($account['previous_employer_verifications'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="previous_employer_verifications-1">
                         <input type="radio" name="previous_employer_verifications" id="previous_employer_verifications-1" value="no"
-                                {{($account['"previous_employer_verifications'] == 0 ? 'checked' : '')}}>
+                    		{{($account['previous_employer_verifications'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
                 </div>

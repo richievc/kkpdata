@@ -60,12 +60,12 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="employ_electronic_access_control-0">
                         <input type="radio" name="employ_electronic_access_control" id="employ_electronic_access_control-0" value="yes"
-                                {{($account['public_address_system'] == 1 ? 'checked' : '')}}>
+                        	{{($account['employ_electronic_access_control'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="employ_electronic_access_control-1">
                         <input type="radio" name="employ_electronic_access_control" id="employ_electronic_access_control-1" value="no"
-                                {{($account['public_address_system'] == 0 ? 'checked' : '')}}>
+                       	 {{($account['employ_electronic_access_control'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
                 </div>

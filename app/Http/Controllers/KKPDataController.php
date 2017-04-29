@@ -240,14 +240,15 @@ class KKPDataController extends Controller
         $data = KKPDataModel::find($id);
 
         $data->public_address_system 	        = $request->public_address_system;
-        $data->employ_electronic_access_control = $request->employ_electronic_access_control == 'yes' ? 1 : 0;;;
+        $data->employ_electronic_access_control = $request->employ_electronic_access_control == 'yes' ? 1 : 0;
         $data->type_of_system                   = $request->type_of_system;
         $data->system_enrollment                = $request->system_enrollment;
         $data->alarm_systems                    = $request->alarm_systems;
         $data->alarm_system_monitored           = $request->alarm_system_monitored;
         $data->penalties_to_false_alarms        = $request->penalties_to_false_alarms;
         $data->history_of_nuisance              = $request->history_of_nuisance;
-        $data->has_panic_alarms                 = $request->has_panic_alarms == 'yes' ? 1 : 0;;
+        $data->is_point_of_contact				= $request->is_point_of_contact == 'yes' ? 1 : 0;
+        $data->has_panic_alarms                 = $request->has_panic_alarms == 'yes' ? 1 : 0;
         $data->panic_alarm_activated            = $request->panic_alarm_activated;
         $data->panic_alarm_investigated         = $request->panic_alarm_investigated;
         $data->onsite_cctv                      = $request->onsite_cctv;
@@ -342,7 +343,7 @@ class KKPDataController extends Controller
 
         $data = KKPDataModel::find($id);
 
-        $data->systems_powered_by_generator     = $request->systems_powered_by_generator;
+        $data->systems_powered_by_generator     = $request->systems_powered_by_generator == 'yes' ? 1 : 0;;
         $data->power_generator_fueled           = $request->power_generator_fueled;
         $data->backup_power_systems_tested      = $request->backup_power_systems_tested;
 

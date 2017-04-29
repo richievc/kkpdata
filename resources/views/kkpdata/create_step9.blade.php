@@ -36,11 +36,12 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="power_generator_fueled">
-                    If YES, what systems are powered by the emergency power generator?  </label>
+                    "If YES, how is the emergency power generator fueled?" </label>
                 <div class="col-md-4">
                     <textarea id="power_generator_fueled" name="power_generator_fueled" class="form-control">{{$account['power_generator_fueled']}}</textarea>
                 </div>
             </div>
+            
 
             <!-- Text input-->
             <div class="form-group">

@@ -27,10 +27,10 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="local_police_response time">
+                <label class="col-md-4 control-label" for="local_police_response_time">
                     What has been the local police response time in previous emergencies? </label>
                 <div class="col-md-4">
-                    <textarea id="local_police_response time" name="local_police_response time" class="form-control">{{$account['local_police_response time']}}</textarea>
+                    <textarea id="local_police_response_time" name="local_police_response_time" class="form-control">{{$account['local_police_response_time']}}</textarea>
                 </div>
             </div>
 

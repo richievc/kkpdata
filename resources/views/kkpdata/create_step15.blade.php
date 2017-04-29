@@ -78,14 +78,6 @@
                 </div>
             </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="level_of_confidence_employees">
-                    If YES, who is in direct charge of the officer deployment? </label>
-                <div class="col-md-4">
-                    <textarea id="level_of_confidence_employees" name="level_of_confidence_employees" class="form-control">{{$account['level_of_confidence_employees']}}</textarea>
-                </div>
-            </div>
 
             <!-- Text input-->
             <div class="form-group">

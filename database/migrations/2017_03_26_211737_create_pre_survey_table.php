@@ -67,32 +67,32 @@ class CreatePreSurveyTable extends Migration
             $table->text('panic_alarm_activated')->nullable();
             $table->text('panic_alarm_investigated')->nullable();
 
-            // CCTV
+            // Step 8 - CCTV
             $table->text('onsite_cctv')->nullable();
             $table->text('where_monitors_located')->nullable();
 
-            // MEDICAL
+            // Step 9 - MEDICAL
             $table->boolean('has_medical_clinic')->default(0);
             $table->text('medical_clinic_description')->nullable();
             $table->boolean('medical_staff_trained')->default(0);
             $table->text('emergency_medical_kits_located')->nullable();
             $table->text('aeds_located')->nullable();
 
-            // HVAC
+            // Step 10 - HVAC
             $table->text('trained_hvac_system_employees')->nullable();
             $table->text('hvac_system_shutdown')->nullable();
             $table->text('hvac_controls_located')->nullable();
 
-            // EMERGENCY POWER
+            // Step 11 - EMERGENCY POWER
             $table->text('systems_powered_by_generator')->nullable();
             $table->text('power_generator_fueled')->nullable();
             $table->text('backup_power_systems_tested')->nullable();
 
-            // JANITORIAL
+            // Step 12 - JANITORIAL
             $table->string('janitorial_service')->nullable();
             $table->string('contracted_janitorial_service')->nullable();
 
-            // Security Policies and Documentation
+            // Step 13 - Security Policies and Documentation
             $table->string('employees_subjected_to_background_checks')->nullable();
             $table->text('describe_estbc')->nullable();
             $table->boolean('employees_criminal_history')->default(0);
@@ -100,7 +100,7 @@ class CreatePreSurveyTable extends Migration
             $table->boolean('guidelines_for_termination')->default(0);
             $table->string('guidelines_for_termination_file')->nullable();
 
-            // Access Control and Visitors
+            // Step 14 - Access Control and Visitors
             $table->boolean('has_visitor_procedures')->default(0);
             $table->string('visitor_procedures_access_file')->nullable();
             $table->boolean('has_employee_access')->default(0);
@@ -113,17 +113,17 @@ class CreatePreSurveyTable extends Migration
             $table->string('written_key_control_policy_file')->nullable();
             $table->string('facility_key_control_manager')->nullable();
 
-            // Security and Safety Reporting
+            // Step 15 - Security and Safety Reporting
             $table->boolean('has_formally_documenting_security')->default(0);
             $table->string('formally_documented_stored')->nullable();
 
-            // Workplace Violence Policy
+            // Step 16 - Workplace Violence Policy
             $table->boolean('has_threatening_behavior_policy')->default(0);
             $table->string('threatening_behavior_policy_file')->nullable();
             $table->boolean('has_assessment_and_management_plan')->default(0);
             $table->string('assessment_and_management_plan_file')->nullable();
 
-            //  Operations
+            // Step 17 - Operations
             $table->boolean('has_on_site_security_force')->default(0);
             $table->text('on_site_security_force_shift')->nullable();
             $table->text('duties_of_officers')->nullable();
@@ -133,7 +133,7 @@ class CreatePreSurveyTable extends Migration
             $table->text('specific_concerns_security_force')->nullable();
             $table->text('in_charge_officer_deployment')->nullable();
 
-            // Emergency Preparations
+            // Step 17 - Emergency Preparations
     		$table->boolean('has_emergency_response_management_plan')->default(0);
     		$table->text('responsible_for_authoring_employees')->nullable();
     		$table->string('responsible_for_authoring_employees_file')->nullable();
