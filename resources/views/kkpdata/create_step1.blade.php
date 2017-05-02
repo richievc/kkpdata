@@ -80,12 +80,12 @@
                             <div class="col-md-4">
                                 <label class="checkbox-inline" for="is_point_of_contact-0">
                                     <input type="radio" name="is_point_of_contact" id="is_point_of_contact-0" value="yes"
-                                            {{(@$account['is_point_of_contact'] == 0 ? 'checked' : '')}}>
+                                  		{{(@$account['is_point_of_contact'] == 1 ? 'checked' : '')}}>
                                     Yes
                                 </label>
                                 <label class="checkbox-inline" for="is_point_of_contact-1">
                                     <input type="radio" name="is_point_of_contact" id="is_point_of_contact-1" value="no"
-                                           {{(@$account['is_point_of_contact'] == 1 ? 'checked' : '')}}>
+                                           {{(@$account['is_point_of_contact'] == 0 ? 'checked' : '')}}>
                                     No
                                 </label>
                             </div>

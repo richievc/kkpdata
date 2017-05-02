@@ -175,7 +175,7 @@
                 <label class="col-md-4 control-label" for="facility_key_control_manager">
                     Who is designated as the facility key control manager? </label>
                 <div class="col-md-4">
-                    <textarea id="facility_key_control_manager" name="facility_key_control_manager" class="form-control"></textarea>
+                    <textarea id="facility_key_control_manager" name="facility_key_control_manager" class="form-control">{{$account['facility_key_control_manager']}}</textarea>
                 </div>
             </div>
 

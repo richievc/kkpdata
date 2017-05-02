@@ -72,9 +72,6 @@ class KKPDataController extends Controller
 
 
 
-
-
-
     public function process_edit_step1(Request $request, $id) {
 
         $data = KKPDataModel::find($id);
@@ -241,6 +238,7 @@ class KKPDataController extends Controller
 
         $data->public_address_system 	        = $request->public_address_system;
         $data->employ_electronic_access_control = $request->employ_electronic_access_control == 'yes' ? 1 : 0;
+        $data->pa_system_notes                  = $request->pa_system_notes;
         $data->type_of_system                   = $request->type_of_system;
         $data->system_enrollment                = $request->system_enrollment;
         $data->alarm_systems                    = $request->alarm_systems;

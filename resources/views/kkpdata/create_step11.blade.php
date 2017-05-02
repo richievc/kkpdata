@@ -91,12 +91,12 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="guidelines_for_termination-0">
                         <input type="radio" name="guidelines_for_termination" id="guidelines_for_termination-0" value="yes"
-                                {{($account['"guidelines_for_termination'] == 1 ? 'checked' : '')}}>
+                      		{{($account['guidelines_for_termination'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="guidelines_for_termination-1">
                         <input type="radio" name="guidelines_for_termination" id="guidelines_for_termination-1" value="no"
-                                {{($account['"guidelines_for_termination'] == 0 ? 'checked' : '')}}>
+                      		{{($account['guidelines_for_termination'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
                 </div>

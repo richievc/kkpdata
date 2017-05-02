@@ -35,7 +35,7 @@
                     <textarea id="threatening_employee" name="threatening_employee" class="form-control">{{@$account['threatening_employee']}}</textarea>
                     <label class="control-label" for="violence">
                         Violence: </label>
-                    <textarea id="violence" name="violence" class="form-control"></textarea>
+                    <textarea id="violence" name="violence" class="form-control">{{@$account['violence']}}</textarea>
                     <label class="control-label" style="text-align: left" for="special_concerns">
                         Please describe any special concerns you may have related to security or emergency readiness at your facility:
                     </label>
