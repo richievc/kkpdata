@@ -13,6 +13,10 @@ class KKPDataController extends Controller
 
     var $uploadDir = 'uploads/kkpdata/';
 
+    public function __construct() {
+    	ini_set('memory_limit','256M');
+    }
+    
     /**
      * @desc: Displays the Table view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
