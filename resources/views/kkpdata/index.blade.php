@@ -53,6 +53,9 @@
                                                 <a href="{{url('kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
+                                             	<a href="{{url('kkpdata/create_pdf/' . $data->id)}}" class="btn btn-xs btn-primary">
+                                                    <i class="fa fa-pdf"></i> Print To PDF
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

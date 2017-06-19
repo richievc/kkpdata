@@ -16,6 +16,9 @@ Auth::routes();
 
 Route::get('home', 'KKPDataController@index');
 
+
+
+
 // STEP 1
 Route::get ( 'kkpdata/create_account', 'KKPDataController@create_step1' );
 Route::post ( 'kkpdata/process_step1', 'KKPDataController@process_step1' );
@@ -95,6 +98,10 @@ Route::get('/', function () {
         return redirect()->to('admin/login');
     }
 });
+
+
+Route::get('kkpdata/create_pdf/{id}', 'PDFController@BuildPDF');
+	
 
 /********************************************************************
  *

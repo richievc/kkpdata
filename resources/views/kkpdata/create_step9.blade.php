@@ -22,14 +22,23 @@
                 <div class="col-md-4">
                     <label class="checkbox-inline" for="systems_powered_by_generator-0">
                         <input type="radio" name="systems_powered_by_generator" id="systems_powered_by_generator-0" value="yes"
-                                {{($account['systems_powered_by_generator'] == 1 ? 'checked' : '')}}>
+                       		{{($account['systems_powered_by_generator'] == 1 ? 'checked' : '')}}>
                         Yes
                     </label>
                     <label class="checkbox-inline" for="systems_powered_by_generator-1">
                         <input type="radio" name="systems_powered_by_generator" id="systems_powered_by_generator-1" value="no"
-                                {{($account['systems_powered_by_generator'] == 0 ? 'checked' : '')}}>
+                       		{{($account['systems_powered_by_generator'] == 0 ? 'checked' : '')}}>
                         No
                     </label>
+                </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="facility_emergency_power_by_generator">
+                    "If YES, what systems are powered by the emergency power generator? " </label>
+                <div class="col-md-4">
+                    <textarea id="facility_emergency_power_by_generator" name="facility_emergency_power_by_generator" class="form-control">{{$account['facility_emergency_power_by_generator']}}</textarea>
                 </div>
             </div>
 
