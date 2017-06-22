@@ -539,7 +539,6 @@ class PDFController extends Controller
 		$fpdf->Cell(185, 6, "If YES, how is the information documented and stored?", '', 0, '', 0, '');
 		$fpdf->Cell(10, 6, (!empty($data->responsible_for_authoring_employees_file) ? "Yes" : "No"), 'B', 1, 'L', 0, '');
 		
-		
 		$fpdf->SetFont('helvetica','', 9);
 		$fpdf->Cell(185, 6, "Does the facility have a Floor Captain/Warden system for providing employee and visitor actions during emergencies?", '', 0, '', 0, '');
 		$fpdf->SetFont('helvetica','', 10);
