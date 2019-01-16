@@ -2,8 +2,8 @@
 
 namespace Backpack\LangFileManager\app\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
 {

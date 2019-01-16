@@ -6,13 +6,16 @@ use Illuminate\Support\Collection;
 
 class BackupCollection extends Collection
 {
+    /** @var null|int */
+    protected $sizeCache = null;
+
     /**
      * @param \Illuminate\Contracts\Filesystem\Filesystem|null $disk
      * @param array                                            $files
      *
      * @return \Spatie\Backup\BackupDestination\BackupCollection
      */
-    public static function createFromFiles($disk, array $files)
+    public static function createFromFiles($disk, array $files): BackupCollection
     {
         return (new static($files))
             ->filter(function ($path) {
@@ -47,14 +50,14 @@ class BackupCollection extends Collection
             ->last();
     }
 
-    /**
-     * @return int
-     */
-    public function size()
+    public function size(): int
     {
-        return $this
-            ->reduce(function ($totalSize, Backup $backup) {
-                return $totalSize + $backup->size();
-            }, 0);
+        if ($this->sizeCache !== null) {
+            return $this->sizeCache;
+        }
+
+        return $this->sizeCache = $this->sum(function (Backup $backup) {
+            return $backup->size();
+        });
     }
 }

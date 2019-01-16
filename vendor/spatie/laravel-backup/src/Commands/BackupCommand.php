@@ -9,19 +9,17 @@ use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 
 class BackupCommand extends BaseCommand
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'backup:run {--filename=} {--only-db} {--only-files} {--only-to-disk=}';
+    /** @var string */
+    protected $signature = 'backup:run {--filename=} {--only-db} {--only-files} {--only-to-disk=} {--disable-notifications}';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Run the backup.';
 
     public function handle()
     {
         consoleOutput()->comment('Starting backup...');
+
+        $disableNotifications = $this->option('disable-notifications');
 
         try {
             $this->guardAgainstInvalidOptions();
@@ -29,19 +27,23 @@ class BackupCommand extends BaseCommand
             $backupJob = BackupJobFactory::createFromArray(config('laravel-backup'));
 
             if ($this->option('only-db')) {
-                $backupJob->doNotBackupFilesystem();
+                $backupJob->dontBackupFilesystem();
             }
 
             if ($this->option('only-files')) {
-                $backupJob->doNotBackupDatabases();
+                $backupJob->dontBackupDatabases();
             }
 
             if ($this->option('only-to-disk')) {
-                $backupJob->backupOnlyTo($this->option('only-to-disk'));
+                $backupJob->onlyBackupTo($this->option('only-to-disk'));
             }
 
             if ($this->option('filename')) {
                 $backupJob->setFilename($this->option('filename'));
+            }
+
+            if ($disableNotifications) {
+                $backupJob->disableNotifications();
             }
 
             $backupJob->run();
@@ -50,7 +52,9 @@ class BackupCommand extends BaseCommand
         } catch (Exception $exception) {
             consoleOutput()->error("Backup failed because: {$exception->getMessage()}.");
 
-            event(new BackupHasFailed($exception));
+            if (! $disableNotifications) {
+                event(new BackupHasFailed($exception));
+            }
 
             return -1;
         }
@@ -59,7 +63,7 @@ class BackupCommand extends BaseCommand
     protected function guardAgainstInvalidOptions()
     {
         if ($this->option('only-db') && $this->option('only-files')) {
-            throw InvalidCommand::create('Cannot use only-db and only-files together');
+            throw InvalidCommand::create('Cannot use `only-db` and `only-files` together');
         }
     }
 }

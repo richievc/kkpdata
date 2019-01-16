@@ -2,13 +2,182 @@
 
 All notable changes to `laravel-backup` will be documented in this file.
 
-### 3.11.0 - 2017-02-18
+# 4.19.1 - 2017-08-03
+ - fix bug in default cleaning strategy
 
-- add support for Laravel 5.4
+# 4.19.0 - 2017-08-02
+ - add Spanish translations
 
-### 3.10.3 - 2017-02-17
+# 4.18.1 - 2017-07-13
+- close resource in backup destination if this was not already done by Flysystem
 
-- add support for read only connections
+# 4.18.0 - 2017-06-15
+ - add `disable-notifications` option to `backup` and `clean` commands
+
+# 4.17.0 - 2017-06-01
+ - add Danish translation
+
+# 4.16.0 - 2017-05-23
+ - add French translation
+
+# 4.15.0 - 2017-05-20
+ - add Romanian translation
+
+# 4.14.2 - 2017-05-18
+- fix for empty backup when trying to back up a single file
+
+# 4.14.1 - 2017-05-09
+- prevent overwriting of dump files when two databases with the same name (but other driver) are dumped
+
+# 4.14.0 - 2017-05-09
+- add support for MongoDB.
+
+# 4.13.1 - 2017-05-01
+- fix call to undefined method getFilesystemName
+
+# 4.13.0 - 2017-04-26
+- add support for gzipping database dumps
+
+# 4.12.1 - 2017-04-19
+- optimise `backup:list` for external file systems
+
+## 4.12.0 - 2017-04-14
+- add Russian translation
+
+## 4.11.0 - 2017-04-14
+- add Ukranian translation
+
+## 4.10.0 - 2017-04-11
+- add ability to override the Slack channel in the config file
+
+## 4.9.0 - 2017-04-11
+- add pt-BR translation
+
+## 4.8.1 - 2017-04-06
+- dump mysql databases in the configured charset
+
+## 4.8.0 - 2017-04-02
+- add Arabic translation
+
+## 4.7.2 - 2017-03-31
+- fix bug where a file that was already closed by Flysystem would be closed again
+
+## 4.7.1 - 2017-03-14
+- do not send mail notification when config for notification contains an empty string
+
+## 4.7.0 - 2017-03-14
+- added German translations
+
+## 4.6.6 - 2017-02-22
+- fix for `File is busy` error
+
+## 4.6.5 - 2017-02-19
+- added `backupName` to `backupDestinationProperties` of notifications
+
+## 4.6.4 - 2017-02-17
+- fix `unhealthy_backup_found_full` translation
+
+## 4.6.3 - 2017-02-17
+- fix `unhealthy_backup_found_full` translation
+
+## 4.6.2 - 2017-02-17
+- fixed translation for `UnhealthyBackupWasFound` notification
+- fixed support for floating point numbers for maximum allow storage
+
+## 4.6.1 - 2017-02-16
+- fixed translations for notifications
+
+## 4.6.0 - 2017-02-15
+- add translations for notifications
+
+## 4.5.0 - 2017-02-12
+- add SQLite support
+
+## 4.4.9 - 2017-02-06
+- fix the dumping of DB's on Windows systems
+
+## 4.4.8 - 2017-02-06
+- avoid empty directories in zips on Windows systems
+
+## 4.4.7 - 2017-02-04
+- improve the creation of db dumper subdirectory in the temporary directory
+
+## 4.4.6 - 2017-02-04
+- force creation of temporary directory
+
+## 4.4.5 - 2017-02-03
+- force `BackupDestinationStatus::maximumAllowedUsageInBytes()` to return an integer
+
+## 4.4.4 - 2017-02-02
+
+- fix constraints so the latest version of `spatie/temporary-backup` can be pulled in
+
+## 4.4.3 - 2017-02-02
+
+- fix bug where entire backup disk would be ignored for backups
+
+## 4.4.2 - 2017-02-01
+
+- improve handling of temporary directory
+
+## 4.4.1 - 2017-01-26
+
+- fix typehint of `setMaximumStorageUsageInMegabytes`
+
+## 4.4.0 - 2017-01-23
+
+- add compatibility for Laravel 5.4
+
+## 4.3.4 - 2017-01-22
+
+- fix bugs in passing values from the database dump config to the db dumpers
+
+## 4.3.3 - 2017-01-19
+
+- fix error where `filename` option would not be respected in the `BackupCommand`
+
+## 4.3.2 - 2017-01-02
+
+- fix errors when `app.name` is empty
+
+## 4.3.1 - 2016-12-11
+
+- fix excluding paths of symlinked directories
+
+### 4.3.0 - 2016-11-26
+
+- added `filename_prefix` to config file
+
+### 4.2.0 - 2016-11-19
+
+- added `BackupZipCreated` event
+
+### 4.1.0 - 2016-10-21
+
+- added the ability to use a read-only host for db backups
+
+### 4.0.4 - 2016-10-19
+
+- use 24h clock when determining names for the zipfile.
+
+### 4.0.3 - 2016-10-02
+
+- fix for performance problems when backing up a large number of files
+
+### 4.0.2 - 2016-09-21
+
+- various bugfixes for the backup monitor
+
+### 4.0.1 - 2016-09-20
+
+- fix for dumping of databases than run on custom ports
+
+### 4.0.0 - 2016-09-17
+
+- removed custom notification system in favor of Laravel 5.3's native notifications
+- made it easier to pass custom arguments to the database dumpers
+- refactored most classes
+- dropped PHP 5 support
 
 ### 3.10.2 - 2016-08-24
 

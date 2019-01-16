@@ -9,19 +9,17 @@ use Spatie\Backup\BackupDestination\BackupDestinationFactory;
 
 class CleanupCommand extends BaseCommand
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'backup:clean';
+    /** @var string */
+    protected $signature = 'backup:clean {--disable-notifications}';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Remove all backups older than specified number of days in config.';
 
     public function handle()
     {
         consoleOutput()->comment('Starting cleanup...');
+
+        $disableNotifications = $this->option('disable-notifications');
 
         try {
             $config = config('laravel-backup');
@@ -30,13 +28,15 @@ class CleanupCommand extends BaseCommand
 
             $strategy = app($config['cleanup']['strategy']);
 
-            $cleanupJob = new CleanupJob($backupDestinations, $strategy);
+            $cleanupJob = new CleanupJob($backupDestinations, $strategy, $disableNotifications);
 
             $cleanupJob->run();
 
             consoleOutput()->comment('Cleanup completed!');
         } catch (Exception $exception) {
-            event(new CleanupHasFailed($exception));
+            if (! $disableNotifications) {
+                event(new CleanupHasFailed($exception));
+            }
 
             return -1;
         }

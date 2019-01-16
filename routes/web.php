@@ -14,97 +14,28 @@ Auth::routes();
  * KKPData Routes
  */
 
+Route::get('/', 'HomeController@index');
 Route::get('home', 'KKPDataController@index');
 
+Route::get('kkpdata/survey/begin', 'KKPDataController@beginSurvey');
+Route::get('kkpdata/survey/background', 'KKPDataController@surveyBackground');
+Route::get('kkpdata/survey/background/{id}', 'KKPDataController@surveyBackground');
+Route::get('kkpdata/survey/property/{id}', 'KKPDataController@surveyProperty');
+Route::get('kkpdata/survey/environmental/{id}', 'KKPDataController@surveyEnvironmental');
+Route::get('kkpdata/survey/documents/{id}', 'KKPDataController@surveyDocuments');
 
+Route::post('kkpdata/process_step1', 'KKPDataController@process_step1');
+Route::post('kkpdata/process_edit_step1/{id}', 'KKPDataController@process_edit_step1');
+Route::post('kkpdata/process_step2/{id}', 'KKPDataController@process_step2');
+Route::post('kkpdata/process_step3/{id}', 'KKPDataController@process_step3');
+Route::post('kkpdata/process_step4/{id}', 'KKPDataController@process_step4');
 
+Route::get('kkpdata/survey/complete_overview/{id}', 'KKPDataController@overview');
 
-// STEP 1
-Route::get ( 'kkpdata/create_account', 'KKPDataController@create_step1' );
-Route::post ( 'kkpdata/process_step1', 'KKPDataController@process_step1' );
-Route::post ( 'kkpdata/process_edit_step1/{id}', 'KKPDataController@process_edit_step1' );
-Route::get ( 'kkpdata/edit/{id}', 'KKPDataController@edit_step1' );
-
-// STEP 2
-Route::get ( 'kkpdata/step2/{id}', 'KKPDataController@step2' );
-Route::post ( 'kkpdata/process_step2/{id}', 'KKPDataController@process_step2' );
-
-// STEP 3
-Route::get ( 'kkpdata/step3/{id}', 'KKPDataController@step3' );
-Route::post ( 'kkpdata/process_step3/{id}', 'KKPDataController@process_step3' );
-
-// STEP 4
-Route::get ( 'kkpdata/step4/{id}', 'KKPDataController@step4' );
-Route::post ( 'kkpdata/process_step4/{id}', 'KKPDataController@process_step4' );
-
-// STEP 5
-Route::get ( 'kkpdata/step5/{id}', 'KKPDataController@step5' );
-Route::post ( 'kkpdata/process_step5/{id}', 'KKPDataController@process_step5' );
-
-// STEP 6
-Route::get ( 'kkpdata/step6/{id}', 'KKPDataController@step6' );
-Route::post ( 'kkpdata/process_step6/{id}', 'KKPDataController@process_step6' );
-
-// STEP 7
-Route::get ( 'kkpdata/step7/{id}', 'KKPDataController@step7' );
-Route::post ( 'kkpdata/process_step7/{id}', 'KKPDataController@process_step7' );
-
-// STEP 8
-Route::get ( 'kkpdata/step8/{id}', 'KKPDataController@step8' );
-Route::post ( 'kkpdata/process_step8/{id}', 'KKPDataController@process_step8' );
-
-// STEP 9
-Route::get ( 'kkpdata/step9/{id}', 'KKPDataController@step9' );
-Route::post ( 'kkpdata/process_step9/{id}', 'KKPDataController@process_step9' );
-
-// STEP 10
-Route::get ( 'kkpdata/step10/{id}', 'KKPDataController@step10' );
-Route::post ( 'kkpdata/process_step10/{id}', 'KKPDataController@process_step10' );
-
-// STEP 11
-Route::get ( 'kkpdata/step11/{id}', 'KKPDataController@step11' );
-Route::post ( 'kkpdata/process_step11/{id}', 'KKPDataController@process_step11' );
-Route::get ( 'kkpdata/delete/{id}/{section}/{file}', 'KKPDataController@deletefile' );
-
-// STEP 12
-Route::get ( 'kkpdata/step12/{id}', 'KKPDataController@step12' );
-Route::post ( 'kkpdata/process_step12/{id}', 'KKPDataController@process_step12' );
-
-// STEP 13
-Route::get ( 'kkpdata/step13/{id}', 'KKPDataController@step13' );
-Route::post ( 'kkpdata/process_step13/{id}', 'KKPDataController@process_step13' );
-
-// STEP 14
-Route::get ( 'kkpdata/step14/{id}', 'KKPDataController@step14' );
-Route::post ( 'kkpdata/process_step14/{id}', 'KKPDataController@process_step14' );
-
-// STEP 15
-Route::get ( 'kkpdata/step15/{id}', 'KKPDataController@step15' );
-Route::post ( 'kkpdata/process_step15/{id}', 'KKPDataController@process_step15' );
-
-// STEP 16
-Route::get ( 'kkpdata/step16/{id}', 'KKPDataController@step16' );
-Route::post ( 'kkpdata/process_step16/{id}', 'KKPDataController@process_step16' );
-
-// STEP 17
-Route::get ( 'kkpdata/step17/{id}', 'KKPDataController@step17' );
-Route::post ( 'kkpdata/process_step17/{id}', 'KKPDataController@process_step17' );
-
-Route::get('/', function () {
-    // Front end Login
-    if (Route::has('login')) {
-        return redirect()->to('login');
-    } else {
-        return redirect()->to('admin/login');
-    }
-});
-
-
-Route::get('kkpdata/create_pdf/{id}', 'PDFController@BuildPDF');
-	
+Route::get('kkpdata/survey/remove_file/{id}/{file}', 'KKPDataController@removeFile');
 
 /********************************************************************
- *
+ * Admin Controllers
  */
 
 Route::group ([ 'middleware' => 'admin' ], function () {

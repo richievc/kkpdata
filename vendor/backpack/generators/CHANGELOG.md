@@ -20,6 +20,33 @@ All Notable changes to `Backpack Generators` will be documented in this file
 - Nothing
 
 
+
+## 1.1.13 - 2018-02-14
+
+### Fixed
+- table now is now pluralized correctly (for English names);
+- crud model is now generated with $table and $fillable uncommented;
+
+
+## 1.1.12 - 2018-02-14
+
+### Deprecated
+- CrudRequest is no longer needed, so generated form requests now extend ```Illuminate\Foundation\Http\FormRequest```;
+
+
+## 1.1.11 - 2017-08-30
+
+### Added
+- Laravel 5.5 support (handle() alias for fire());
+- Package auto-discovery;
+
+
+## 1.1.10 - 2017-08-11
+
+### Fixed
+- calls to CrudController::storeCrud() and CrudController::updateCrud() now pass the $request as parameter - just in case you modified it in the setup() in any way;
+
+
 ## 1.1.9 - 2017-04-26
 
 ### Added

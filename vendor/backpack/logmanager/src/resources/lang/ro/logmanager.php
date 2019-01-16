@@ -20,6 +20,7 @@ return [
       'download'                    => 'Descarcă',
       'delete_error_title'          => 'Eroare',
       'existing_logs'               => 'Istorice existente',
+      'file_name'                   => 'Nume de fișier',
       'file_size'                   => 'Mărime fișier',
       'delete_cancel_title'         => 'E ok',
       'last_modified'               => 'Ultima modificare',
@@ -28,6 +29,6 @@ return [
       'delete_cancel_message'       => 'Fișierul NU a fost șters.',
       'delete_error_message'        => 'Fișierul NU a fost șters.',
       'delete_confirmation_message' => 'Fișierul a fost șters.',
-      'log_file_doesnt_exist'       => "Fișierul nu există.",
+      'log_file_doesnt_exist'       => 'Fișierul nu există.',
 
 ];

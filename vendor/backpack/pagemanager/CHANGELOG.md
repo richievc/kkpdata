@@ -22,6 +22,59 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
+## 1.1.27 - 2018-12-06
+
+### Fixed
+- #75 - using old version of select_page_template field;
+
+
+## 1.1.26 - 2018-11-16
+
+### Fixed
+- #73 - hotfix;
+
+## 1.1.25 - 2018-11-16
+
+### Fixed
+- #73 - converting template method name to a readable name stripped characters in some instances;
+
+## 1.1.24 - 2018-10-16
+
+### Added
+- PT translation;
+- merged #70 - using custom Backpack guard as defined by ```backpack_auth()```;
+- put PageManager panel behind standard Backpack middleware (defined in Base config file);
+
+## 1.1.23 - 2018-03-13
+
+### Added
+- FR, DE and NL translations;
+
+
+## 1.1.22 - 2017-11-02
+
+### Added
+- search route for CRUD 3.3 upgrade;
+
+
+## 1.1.21 - 2017-08-30
+
+### Added
+- package autodiscovery for Laravel 5.5;
+
+
+## 1.1.20 - 2017-08-11
+
+### Added
+- Danish (da_DK) language files, thanks to [Frederik Rabøl](https://github.com/Xayer);
+
+
+## 1.1.19 - 2017-07-18
+
+### Added
+- language file support and EN and IT language files, thanks to [Federico Liva](https://github.com/fede91it);
+
+
 ## 1.1.18 - 2017-07-06
 
 ### Added

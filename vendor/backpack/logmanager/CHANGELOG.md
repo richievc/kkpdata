@@ -19,6 +19,31 @@ All Notable changes to `LogManager` will be documented in this file
 ### Security
 - Nothing
 
+
+## [2.3.18] - 2018-03-13
+
+## Added
+- better preview, thanks to [Shamar Kellman](https://github.com/ShamarKellman)'s PR #21;
+
+
+## [2.3.17] - 2018-03-13
+
+## Added
+- spanish translations;
+
+
+## [2.3.16] - 2017-08-30
+
+## Added
+- package auto-discovery for Laravel 5.5 apps;
+
+
+## [2.3.15] - 2017-08-11
+
+## Added
+- Danish (da_DK) language files, thanks to [Frederik Rabøl](https://github.com/Xayer);
+
+
 ## [2.3.14] - 2017-07-10
 
 ### Added

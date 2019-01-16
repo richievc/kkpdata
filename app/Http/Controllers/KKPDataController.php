@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\PropertyModel;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\KKPDataModel;
 use Spatie\Permission\Models\Role;
@@ -15,6 +17,7 @@ class KKPDataController extends Controller
 
     public function __construct() {
     	ini_set('memory_limit','256M');
+        $this->middleware('auth');
     }
     
     /**
@@ -26,733 +29,290 @@ class KKPDataController extends Controller
         $user = Auth::user();
 
         if($user->hasRole('Manager')) {
-            return redirect('kkpdata/create_account');
+            return redirect('kkpdata/home');
         }
 
-        $data['accounts'] = KKPDataModel::all();
+        $data['properties'] = PropertyModel::where('user_id', $user->id)->get();
+
+
+        $data['account']    = $user;
+        $data['section']    = null;
+
         return view('kkpdata/index', $data);
     }
 
-    /**
-     * @desc: Step 1 - Background Information
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create_step1() {
-        $data['account'] = array();
-        return view('kkpdata/create_step1', $data);
+    public function beginSurvey() {
+
+        return redirect('kkpdata/survey/background');
     }
 
     /**
-     * @desc: Edit Step 1 - Background Information
+     * @desc: Display The Background Form
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit_step1($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step1', $data);
+    public function surveyBackground() {
+        $user = Auth::user();
+
+        $property = null;
+        $property_id = Request()->segment(4);
+        if($property_id < 1) { } else {
+            $property = PropertyModel::where('id', $property_id)->get()->first();
+        }
+
+        $data['account']    = $user;
+        $data['property'] = $property;
+        $data['section']    = Request()->segment(3);
+
+        return view('kkpdata/survey/index', $data);
     }
 
     /**
-     * @desc: Process Step 1 - Background Information
+     * @desc: Display The Property Form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function surveyProperty() {
+        $user = Auth::user();
+
+        $property_id = Request()->segment(4);
+        if($property_id < 1) {
+            return Redirect()->to('/survey/background');
+        } else {
+            $property = PropertyModel::where('id', $property_id)->get()->first();
+        }
+
+        $data['account']    = $user;
+        $data['property']   = $property;
+        $data['section']    = Request()->segment(3);
+
+        return view('kkpdata/survey/index', $data);
+    }
+
+    /**
+     * @desc: Display The Environmental Form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function surveyEnvironmental() {
+        $user = Auth::user();
+
+        $property_id = Request()->segment(4);
+        if($property_id < 1) {
+            return Redirect()->to('/survey/background');
+        } else {
+            $property = PropertyModel::where('id', $property_id)->get()->first();
+        }
+
+        $data['account']    = $user;
+        $data['property']   = $property;
+        $data['section']    = Request()->segment(3);
+
+        return view('kkpdata/survey/index', $data);
+    }
+
+    /**
+     * @desc: Display The Documents Form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function surveyDocuments() {
+        $user = Auth::user();
+
+        $property_id = Request()->segment(4);
+        if($property_id < 1) {
+            return Redirect()->to('/survey/background');
+        } else {
+            $property = PropertyModel::where('id', $property_id)->get()->first();
+        }
+
+        $data['account']    = $user;
+        $data['property']   = $property;
+        $data['section']    = Request()->segment(3);
+
+        return view('kkpdata/survey/index', $data);
+    }
+
+
+/*********************************************************
+ * PROCESSES
+**/
+
+    /**
+     * Process a New Property
+     *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function process_step1(Request $request) {
+        $user = Auth::user();
 
-        $data = new KKPDataModel;
+        $property = new PropertyModel();
 
-        $data->facility 		        = $request->facility;
-        $data->main_phone 		        = $request->main_phone;
-        $data->your_name 		        = $request->your_name;
-        $data->your_title 		        = $request->your_title;
-        $data->your_phone 		        = $request->your_phone;
-        $data->is_point_of_contact 	    = $request->is_point_of_contact == 'yes' ? 1 : 0;
-        $data->point_of_contact_name    = $request->point_of_contact_name;
-        $data->point_of_contact_phone   = $request->point_of_contact_phone;
-        $data->save();
+        $property->user_id          = $user->id;
+        $property->property_name    = $request->property_name;
+        $property->address          = $request->address;
+        $property->address2         = $request->address2;
+        $property->city             = $request->city;
+        $property->state            = $request->state;
+        $property->postal           = $request->postal;
+        $property->phone            = $request->phone;
+        $property->website          = $request->website;
+        $property->manager_name     = $request->manager_name;
+        $property->manager_phone    = $request->manager_phone;
+        $property->manager_email    = $request->manager_email;
 
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step2/' . $data->id);
-    }
-
-
-
-    public function process_edit_step1(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->facility 		        = $request->facility;
-        $data->main_phone 		        = $request->main_phone;
-        $data->your_name 		        = $request->your_name;
-        $data->your_title 		        = $request->your_title;
-        $data->your_phone 		        = $request->your_phone;
-        $data->is_point_of_contact 	    = $request->is_point_of_contact == 'yes' ? 1 : 0;
-        $data->point_of_contact_name    = $request->point_of_contact_name;
-        $data->point_of_contact_phone   = $request->point_of_contact_phone;
-        $data->save();
+        $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step2/' . $data->id);
+        return redirect()->to('kkpdata/survey/property/' . $property->id);
     }
 
     /**
-     * @desc: Step 2 - STAFF INFORMATION
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step2($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step2', $data);
-    }
-
-    /**
-     * @desc: Process Step 2 - STAFF INFORMATION
+     * Process a New Property
+     *
      * @param Request $request
-     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function process_step2(Request $request, $id) {
+    public function process_edit_step1(Request $request) {
+        $user = Auth::user();
 
-        $data = KKPDataModel::find($id);
+        $property = PropertyModel::where('id', $request->property_id)->get()->first();
 
-        $data->manager 		            = $request->manager;
-        $data->director 		        = $request->director;
-        $data->operation_manager 	    = $request->operation_manager;
-        $data->hr_manager 	            = $request->hr_manager;
+        $property->property_name                    = $request->property_name;
+        $property->address                          = $request->address;
+        $property->address2                         = $request->address2;
+        $property->city                             = $request->city;
+        $property->state                            = $request->state;
+        $property->postal                           = $request->postal;
+        $property->phone                            = $request->phone;
+        $property->website                          = $request->website;
+        $property->manager_name                     = $request->manager_name;
+        $property->manager_phone                    = $request->manager_phone;
+        $property->manager_email                    = $request->manager_email;
+        $property->demographic_composition          = $request->demographic_composition;
+        $property->level_of_unemployment            = $request->level_of_unemployment;
+        $property->police_jurisdiction              = $request->police_jurisdiction;
+        $property->district_zone                    = $request->district_zone;
+        $property->police_crime_prevention_officers = $request->police_crime_prevention_officers;
+        $property->crime_free_housing_certification = $request->crime_free_housing_certification;
+        $property->tax_credit                       = $request->tax_credit;
 
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step3/' . $id);
-    }
-
-    /**
-     * @desc: Step 3 - FACILITY INFORMATION
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step3($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step3', $data);
-    }
-
-    /**
-     * @desc: Process Step 3 - FACILITY INFORMATION
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step3(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->type_of_operation 	        = $request->type_of_operation;
-        $data->business_hrs 		        = $request->business_hrs;
-        $data->assets_of_greatest_concern   = $request->assets_of_greatest_concern;
-        $data->employee_schedules 	        = $request->employee_schedules;
-        $data->pharmacy_onsite 	            = $request->pharmacy_onsite == 'yes' ? 1 : 0;
-        $data->save();
+        $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step4/' . $id);
+        return redirect()->to('kkpdata/survey/property/' . $property->id);
     }
 
     /**
-     * @desc: Step 4 - Security Threat Concerns
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step4($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step4', $data);
-    }
-
-    /**
-     * @desc: Process Step 4 - Security Threat Concerns
      * @param Request $request
-     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function process_step4(Request $request, $id) {
+    public function process_step2(Request $request) {
 
-        $data = KKPDataModel::find($id);
+        $property = PropertyModel::where('id', $request->id)->get()->first();
 
-        $data->trespass_concerns 	        = $request->trespass_concerns;
-        $data->vandalism_concerns 	        = $request->vandalism_concerns;
-        $data->theft_concerns 	            = $request->theft_concerns;
-        $data->threatening_employee 	    = $request->threatening_employee;
-        $data->violence 	                = $request->violence;
-        $data->special_concerns 	        = $request->special_concerns;
+        $property->num_of_units         = $request->num_of_units;
+        $property->num_of_residents     = $request->num_of_residents;
+        $property->excepts_hud          = $request->excepts_hud;
+        $property->turnover_rate        = $request->turnover_rate;
+        $property->rental_fee_start     = $request->rental_fee_start;
+        $property->rental_fee_end       = $request->rental_fee_end;
 
-        $data->save();
+        $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step5/' . $id);
+        return redirect()->to('kkpdata/survey/environmental/' . $request->id);
+
     }
 
     /**
-     * @desc: Step 5 - Local Emergency Responders and Jurisdictions
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step5($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step5', $data);
-    }
-
-    /**
-     * @desc: Process Step 5 - Local Emergency Responders and Jurisdictions
      * @param Request $request
-     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function process_step5(Request $request, $id) {
+    public function process_step3(Request $request) {
 
-        $data = KKPDataModel::find($id);
+        $property = PropertyModel::where('id', $request->id)->get()->first();
 
-        $data->police_jurisdiction 	            = $request->police_jurisdiction;
-        $data->local_police_response_time       = $request->local_police_response_time;
-        $data->local_ambulance_jurisdiction     = $request->local_ambulance_jurisdiction;
+        $property->incidents_not_reported           = $request->incidents_not_reported;
+        $property->violent_sexual_encounters        = $request->violent_sexual_encounters;
+        $property->reports_majority_of_crimes       = $request->reports_majority_of_crimes;
+        $property->reports_suspicious_behavior      = $request->reports_suspicious_behavior;
+        $property->reports_drugs                    = $request->reports_drugs;
+        $property->reports_high_male_traffic        = $request->reports_high_male_traffic;
+        $property->history_of_stolen_cars           = $request->history_of_stolen_cars;
+        $property->pizza_deliveries                 = $request->pizza_deliveries;
+        $property->taxi_services_nights             = $request->taxi_services_nights;
+        $property->known_gangs_on_property          = $request->known_gangs_on_property;
+        $property->gangs_name                       = $request->gangs_name;
+        $property->apartment_suspicious_activity    = $request->apartment_suspicious_activity;
+        $property->five_crime_concerns              = $request->five_crime_concerns;
 
-        $data->save();
+        $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step6/' . $id);
+        return redirect()->to('kkpdata/survey/documents/' . $request->id);
     }
 
-    /**
-     * @desc: Step 6 - Infrastructure
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step6($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step6', $data);
-    }
+    public function process_step4(Request $request) {
 
+        $property = PropertyModel::where('id', $request->id)->get()->first();
 
-    /**
-     * @desc: Process Step 6 - Infrastructure
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step6(Request $request, $id) {
+        if ($request->file('upload_file_1')) {
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $request->id);
+            $file = $request->file('upload_file_1');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $request->id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $property->upload_file_1 = $name;
+        }
 
-        $data = KKPDataModel::find($id);
+        if ($request->file('upload_file_2')) {
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $request->id);
+            $file = $request->file('upload_file_2');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $request->id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $property->upload_file_2 = $name;
+        }
 
-        $data->public_address_system 	        = $request->public_address_system;
-        $data->employ_electronic_access_control = $request->employ_electronic_access_control == 'yes' ? 1 : 0;
-        $data->pa_system_notes                  = $request->pa_system_notes;
-        $data->type_of_system                   = $request->type_of_system;
-        $data->system_enrollment                = $request->system_enrollment;
-        $data->alarm_systems                    = $request->alarm_systems;
-        $data->alarm_system_monitored           = $request->alarm_system_monitored;
-        $data->penalties_to_false_alarms        = $request->penalties_to_false_alarms;
-        $data->history_of_nuisance              = $request->history_of_nuisance;
-        $data->is_point_of_contact				= $request->is_point_of_contact == 'yes' ? 1 : 0;
-        $data->has_panic_alarms                 = $request->has_panic_alarms == 'yes' ? 1 : 0;
-        $data->panic_alarm_activated            = $request->panic_alarm_activated;
-        $data->panic_alarm_investigated         = $request->panic_alarm_investigated;
-        $data->onsite_cctv                      = $request->onsite_cctv;
-        $data->where_monitors_located           = $request->where_monitors_located;
+        if ($request->file('upload_file_3')) {
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $request->id);
+            $file = $request->file('upload_file_3');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $request->id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $property->upload_file_3 = $name;
+        }
 
-        $data->save();
+        if ($request->file('upload_file_4')) {
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $request->id);
+            $file = $request->file('upload_file_4');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $request->id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $property->upload_file_4 = $name;
+        }
+
+        if ($request->file('upload_file_5')) {
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $request->id);
+            $file = $request->file('upload_file_5');
+            $extension = $file->getClientOriginalExtension();
+            $name = uniqid() . '_id_' . $request->id . '.' . $extension;
+            $file->move($destinationPath, $name);
+            $property->upload_file_5 = $name;
+        }
+
+        $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step7/' . $id);
+        return redirect()->to('kkpdata/survey/complete_overview/' . $request->id);
     }
 
-    /**
-     * @desc: Step 7 - Alarm System
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step7($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step7', $data);
-    }
-
-    /**
-     * @desc: Process Step 7 - Alarm System
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step7(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->has_medical_clinic 	            = $request->has_medical_clinic == 'yes' ? 1 : 0;
-        $data->medical_clinic_description       = $request->medical_clinic_description;
-        $data->medical_staff_trained 	        = $request->medical_staff_trained == 'yes' ? 1 : 0;
-        $data->emergency_medical_kits_located   = $request->emergency_medical_kits_located;
-        $data->aeds_located                     = $request->emergency_medical_kits_located;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step8/' . $id);
-    }
-
-    /**
-     * @desc: Step 8 - MEDICAL
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step8($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step8', $data);
-    }
-
-
-    /**
-     * @desc: Process Step 8 - MEDICAL
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step8(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->trained_hvac_system_employees    = $request->trained_hvac_system_employees;
-        $data->hvac_system_shutdown             = $request->hvac_system_shutdown;
-        $data->hvac_controls_located            = $request->hvac_controls_located;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step9/' . $id);
-    }
-
-    /**
-     * @desc: Step 9 -  EMERGENCY POWER
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step9($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step9', $data);
-    }
-
-    /**
-     * @desc: Process Step 9 -  EMERGENCY POWER
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step9(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->systems_powered_by_generator     = $request->systems_powered_by_generator == 'yes' ? 1 : 0;;
-        $data->power_generator_fueled           = $request->power_generator_fueled;
-        $data->backup_power_systems_tested      = $request->backup_power_systems_tested;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step10/' . $id);
-    }
-
-    /**
-     * @desc: Step 10 - JANITORIAL
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step10($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step10', $data);
-    }
-
-    /**
-     * @desc: Process Step 10 - JANITORIAL
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step10(Request $request, $id) {
-
-        $data = KKPDataModel::find($id);
-
-        $data->janitorial_service               = $request->janitorial_service;
-        $data->contracted_janitorial_service    = $request->contracted_janitorial_service;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step11/' . $id);
-    }
-
-
-    /**
-     * @desc: Step 11 - Security Policies and Documentation
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function step11($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step11', $data);
-    }
-
-    /**
-     * @desc: Process Step 11 - Security Policies and Documentation
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process_step11(Request $request, $id)
+    public function overview()
     {
 
-        $data = KKPDataModel::find($id);
+        $id = Request()->segment(4);
+        $property = PropertyModel::where('id', id)->get()->first();
 
-        $data->employees_subjected_to_background_checks = $request->employees_subjected_to_background_checks;
-        $data->describe_estbc = $request->describe_estbc;
-        $data->employees_criminal_history = $request->employees_criminal_history == 'yes' ? 1 : 0;
-        $data->previous_employer_verifications = $request->previous_employer_verifications == 'yes' ? 1 : 0;
-        $data->guidelines_for_termination = $request->guidelines_for_termination == 'yes' ? 1 : 0;
-
-        if ($request->file('guidelines_for_termination_file')) {
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('guidelines_for_termination_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->guidelines_for_termination_file = $name;
-        }
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step12/' . $id);
+        return view('kkpdata/survey/overview', compact('property'));
     }
-
-    public function step12($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step12', $data);
-    }
-
-    public function process_step12(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-
-        $data->has_visitor_procedures = $request->has_visitor_procedures == 'yes' ? 1 : 0;
-        if ($request->file('visitor_procedures_access_file')) {
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('visitor_procedures_access_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->visitor_procedures_access_file = $name;
-        }
-
-        $data->has_employee_access = $request->has_employee_access == 'yes' ? 1 : 0;
-        if ($request->file('employee_access_file')) {
-
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('employee_access_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->employee_access_file = $name;
-        }
-
-        $data->has_contractor_access = $request->has_contractor_access == 'yes' ? 1 : 0;
-        if ($request->file('contractor_access_file')) {
-
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('contractor_access_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->contractor_access_file = $name;
-        }
-
-        $data->has_electronic_access_control_systems = $request->has_electronic_access_control_systems == 'yes' ? 1 : 0;
-        if ($request->file('electronic_access_control_systems_file')) {
-
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('electronic_access_control_systems_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->electronic_access_control_systems_file = $name;
-        }
-
-        $data->has_written_key_control_policy = $request->has_written_key_control_policy == 'yes' ? 1 : 0;
-        if ($request->file('written_key_control_policy_file')) {
-
-            $destinationPath = public_path('uploads/kkpdata/'.$id.'/');
-            $file = $request->file('written_key_control_policy_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->written_key_control_policy_file = $name;
-        }
-
-        $data->facility_key_control_manager = $request->facility_key_control_manager;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step13/' . $id);
-    }
-
-
-
-    public function step13($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step13', $data);
-    }
-
-
-    public function process_step13(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-
-        $data->has_formally_documenting_security    = $request->has_formally_documenting_security == 'yes' ? 1 : 0;
-        $data->formally_documented_stored           = $request->formally_documented_stored;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step14/' . $id);
-    }
-
-
-
-    public function step14($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step14', $data);
-    }
-
-
-    public function process_step14(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-
-        $data->has_threatening_behavior_policy = $request->has_threatening_behavior_policy == 'yes' ? 1 : 0;
-        if ($request->file('threatening_behavior_policy_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('threatening_behavior_policy_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->threatening_behavior_policy_file = $name;
-        }
-
-        $data->has_assessment_and_management_plan = $request->has_assessment_and_management_plan == 'yes' ? 1 : 0;
-        if ($request->file('assessment_and_management_plan_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('assessment_and_management_plan_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->assessment_and_management_plan_file = $name;
-        }
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step15/' . $id);
-    }
-
-
-
-
-
-    public function step15($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step15', $data);
-    }
-
-
-    public function process_step15(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-        //Security Operations
-
-        $data->has_on_site_security_force           = ($request->has_on_site_security_force =='yes' ? 1 : 0);
-        $data->on_site_security_force_shift         = $request->on_site_security_force_shift;
-        $data->duties_of_officers                   = $request->duties_of_officers;
-        $data->dispatched_during_emergencies        = $request->dispatched_during_emergencies;
-        $data->level_of_confidence_management       = $request->level_of_confidence_management;
-        $data->level_of_confidence_employees        = $request->level_of_confidence_employees;
-        $data->specific_concerns_security_force     = $request->specific_concerns_security_force;
-        $data->in_charge_officer_deployment     = $request->specific_concerns_security_force;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step16/' . $id);
-    }
-
-
-    public function step16($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step16', $data);
-    }
-
-    public function process_step16(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-        // Emergency Preparations
-
-        $data->has_emergency_response_management_plan           = ($request->has_emergency_response_management_plan =='yes' ? 1 : 0);
-        $data->responsible_for_authoring_employees              = $request->responsible_for_authoring_employees;
-
-        if ($request->file('responsible_for_authoring_employees_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('responsible_for_authoring_employees_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->responsible_for_authoring_employees_file = $name;
-        }
-
-        $data->has_floor_captain_warden_system = ($request->has_floor_captain_warden_system =='yes' ? 1 : 0);
-        $data->types_of_emergency_drills              = $request->types_of_emergency_drills;
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/step17/' . $id);
-    }
-
-
-    public function step17($id) {
-        $data['account'] = KKPDataModel::find($id);
-        return view('kkpdata/create_step17', $data);
-    }
-
-    public function process_step17(Request $request, $id)
-    {
-
-        $data = KKPDataModel::find($id);
-        // Emergency Preparations
-
-        $data->building_name1              = $request->building_name1;
-        $data->no_of_floor_plans1              = $request->no_of_floor_plans1;
-        if ($request->file('floor_plans1_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans1_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans1_file = $name;
-        }
-
-        $data->building_name2              = $request->building_name2;
-        $data->no_of_floor_plans2              = $request->no_of_floor_plans2;
-        if ($request->file('floor_plans2_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans2_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans2_file = $name;
-        }
-
-        $data->building_name3              = $request->building_name3;
-        $data->no_of_floor_plans3              = $request->no_of_floor_plans3;
-        if ($request->file('floor_plans3_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans3_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans3_file = $name;
-        }
-
-        $data->building_name4              = $request->building_name4;
-        $data->no_of_floor_plans4              = $request->no_of_floor_plans4;
-        if ($request->file('floor_plans4_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans4_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans4_file = $name;
-        }
-
-        $data->building_name5              = $request->building_name5;
-        $data->no_of_floor_plans5              = $request->no_of_floor_plans5;
-        if ($request->file('floor_plans5_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans5_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans5_file = $name;
-        }
-
-        $data->building_name6              = $request->building_name6;
-        $data->no_of_floor_plans6              = $request->no_of_floor_plans6;
-        if ($request->file('floor_plans6_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans6_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans6_file = $name;
-        }
-
-        $data->building_name7              = $request->building_name7;
-        $data->no_of_floor_plans7              = $request->no_of_floor_plans7;
-        if ($request->file('floor_plans7_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans7_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans7_file = $name;
-        }
-
-        $data->building_name8              = $request->building_name8;
-        $data->no_of_floor_plans8              = $request->no_of_floor_plans8;
-        if ($request->file('floor_plans8_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans8_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans8_file = $name;
-        }
-
-        $data->building_name9              = $request->building_name9;
-        $data->no_of_floor_plans9              = $request->no_of_floor_plans9;
-        if ($request->file('floor_plans9_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans9_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans9_file = $name;
-        }
-
-        $data->building_name10              = $request->building_name10;
-        $data->no_of_floor_plans10              = $request->no_of_floor_plans10;
-        if ($request->file('floor_plans10_file')) {
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            $file = $request->file('floor_plans10_file');
-            $extension = $file->getClientOriginalExtension();
-            $name = uniqid() . '_id_' . $id . '.' . $extension;
-            $file->move($destinationPath, $name);
-            $data->floor_plans10_file = $name;
-        }
-
-        $data->save();
-
-        \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('home');
-    }
-
-
 
 
     /**
@@ -762,21 +322,47 @@ class KKPDataController extends Controller
      * @param $file
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deletefile($id, $section, $file) {
-        $data = KKPDataModel::find($id);
+    public function removeFile() {
+        $id     = Request()->segment(4);
+        $file   = Request()->segment(5);
+
+        $property = PropertyModel::where('id', $id)->get()->first();
 
         // get the file name base off id and file name
-        if(!empty($data->$file)) {
+        if(!empty($property->$file)) {
             // if id does delete it
-            $destinationPath = public_path('uploads/kkpdata/' . $id);
-            if(file_exists($destinationPath . '/' . $data->$file)) {
-                Storage::delete($destinationPath . '/' . $data->$file);
+            $destinationPath = public_path('uploads/kkpdata/property_management/' . $id);
+            if(file_exists($destinationPath . '/' . $property->$file)) {
+                Storage::delete($destinationPath . '/' . $property->$file);
             }
-            $data->$file = null;
-            $data->save();
+            $property->$file = null;
+            $property->save();
         }
-        return redirect()->to('kkpdata/' . $section . '/' . $id);
+        return redirect()->to('kkpdata/survey/documents/' . $id);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

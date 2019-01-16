@@ -20,6 +20,19 @@ All Notable changes to `Backpack Settings` will be documented in this file
 - Nothing
 
 
+## [2.1.20] - 2017-12-02
+
+## Added
+- package auto-discovery;
+
+
+## [2.1.19] - 2017-08-11
+
+## Added
+- Danish (da_DK) language files, thanks to [Frederik Rabøl](https://github.com/Xayer);
+- Russian (ru) language files, thanks to [exotickg1](https://github.com/exotickg1);
+
+
 ## 2.1.18 - 2017-07-06
 
 ### Added

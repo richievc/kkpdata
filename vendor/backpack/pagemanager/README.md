@@ -9,8 +9,11 @@
 
 An interface to let your admins add and edit presentation pages to your Laravel 5 website, by defining page templates with any number of content areas and any number of content types. Uses [Laravel Backpack](https://github.com/laravel-backpack).
 
+![Backpack PageManager edit page](https://backpackforlaravel.com/uploads/screenshots/page_edit.png "PageManager edit page")
+
+
 > ### Security updates and breaking changes
-> Please **[subscribe to the Backpack Newsletter](http://eepurl.com/bUEGjf)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
+> Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
 
 ## Install
@@ -21,7 +24,7 @@ An interface to let your admins add and edit presentation pages to your Laravel 
 $ composer require backpack/pagemanager
 ```
 
-2) Then add the service providers to your config/app.php file:
+2) For Laravel apps <5.5, add the service providers to your config/app.php file:
 
 ```
 Cviebrock\EloquentSluggable\ServiceProvider::class, 
@@ -134,7 +137,7 @@ If you discover any security related issues, please email hello@tabacitu.ro inst
 
 ## License
 
-Backpack is free for non-commercial use and $19/project for commercial use. Please see [License File](LICENSE.md) and [backpackforlaravel.com](https://backpackforlaravel.com/#pricing) for more information.
+Backpack is free for non-commercial use and 39 EUR/project for commercial use. Please see [License File](LICENSE.md) and [backpackforlaravel.com](https://backpackforlaravel.com/#pricing) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/backpack/PageManager.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square

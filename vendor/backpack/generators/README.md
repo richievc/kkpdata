@@ -11,7 +11,7 @@
 Quickly generate Backpack templated Models, Requests, Views and Config files.
 
 > ### Security updates and breaking changes
-> Please **[subscribe to the Backpack Newsletter](http://eepurl.com/bUEGjf)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
+> Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
 ## Install
 
@@ -21,8 +21,9 @@ Via Composer
 $ composer require backpack/generators --dev
 ```
 
-You'll only want to use these generators for ```local``` development, so you don't want to update the ```production``` providers array in ```config/app.php```. Instead, add the provider in ```app/Providers/AppServiceProvider.php```, like so:
-Add this to your config/app.php, under "providers":
+For Laravel 5.5 - you're done.
+
+For Laravel 5.4 or 5.3 you'll only want to use these generators for ```local``` development, so you don't want to update the ```production``` providers array in ```config/app.php```. Instead, add the provider in ```app/Providers/AppServiceProvider.php```, like so:
 
 ```php
 public function register()
@@ -41,25 +42,25 @@ Open the console and enter one of the commands to generate:
 - Models (available options: --softdelete)
 
 ``` bash
-$ php artisan backpack:model
+$ php artisan backpack:model {Entity_name}
 ```
 
 - Requests
 
 ``` bash
-$ php artisan backpack:request
+$ php artisan backpack:request {Entity_name}
 ```
 
 - Views (available options: --plain)
 
 ``` bash
-$ php artisan backpack:view
-```
+$ php artisan backpack:view {Entity_name}
+``` 
 
 - Config files
 
 ``` bash
-$ php artisan backpack:config
+$ php artisan backpack:config {Entity_name}
 ```
 
 - All files for a new Backpack\CRUD interface:

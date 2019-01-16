@@ -9,7 +9,7 @@
 
 define('FPDF_VERSION','1.81');
 
-class FPDF
+class Fpdf
 {
 protected $page;               // current page number
 protected $n;                  // current object number
@@ -268,7 +268,7 @@ function AliasNbPages($alias='{nb}')
 function Error($msg)
 {
 	// Fatal error
-	throw new Exception('FPDF error: '.$msg);
+	throw new \Exception('FPDF error: '.$msg);
 }
 
 function Close()
@@ -1894,33 +1894,5 @@ protected function _enddoc()
 	$this->_put('%%EOF');
 	$this->state = 3;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 ?>

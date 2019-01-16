@@ -13,7 +13,7 @@ class Page extends Model
     use Sluggable;
     use SluggableScopeHelpers;
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
@@ -50,7 +50,7 @@ class Page extends Model
 
     public function getTemplateName()
     {
-        return trim(preg_replace('/(id|at|\[\])$/i', '', ucfirst(str_replace('_', ' ', $this->template))));
+        return str_replace('_', ' ', title_case($this->template));
     }
 
     public function getPageLink()
@@ -60,7 +60,8 @@ class Page extends Model
 
     public function getOpenButton()
     {
-        return '<a class="btn btn-default btn-xs" href="'.$this->getPageLink().'" target="_blank"><i class="fa fa-eye"></i> Open</a>';
+        return '<a class="btn btn-default btn-xs" href="'.$this->getPageLink().'" target="_blank">'.
+            '<i class="fa fa-eye"></i> '.trans('backpack::pagemanager.open').'</a>';
     }
 
     /*
