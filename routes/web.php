@@ -14,7 +14,12 @@ Auth::routes();
  * KKPData Routes
  */
 
-Route::get('/', 'HomeController@index');
+/**
+ * KKPData Routes
+ */
+Route::get('/', function() {
+    return Redirect::to('/home');
+});
 Route::get('home', 'KKPDataController@index');
 
 Route::get('kkpdata/survey/begin', 'KKPDataController@beginSurvey');
