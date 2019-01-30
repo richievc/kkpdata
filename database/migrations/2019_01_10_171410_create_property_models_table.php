@@ -75,7 +75,6 @@ class CreatePropertyModelsTable extends Migration
             $table->string('upload_file_4')->nullable();
             $table->string('upload_file_5')->nullable();
 
-
             $table->timestamps();
         });
     }

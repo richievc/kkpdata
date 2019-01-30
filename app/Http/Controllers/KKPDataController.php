@@ -309,9 +309,9 @@ class KKPDataController extends Controller
     {
 
         $id = Request()->segment(4);
-        $property = PropertyModel::where('id', id)->get()->first();
+        $property = PropertyModel::where('id', $id)->get()->first();
 
-        return view('kkpdata/survey/overview', compact('property'));
+        return view('kkpdata/overview', compact('property'));
     }
 
 

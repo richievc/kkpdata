@@ -13,7 +13,7 @@
                     <!-- Multiple Checkboxes (inline) -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="incidents_not_reported">
-                            Have there been any recent incidents of assault or burglary reported by
+                            Have there been any recent incidents (180 days) of assault or burglary reported by
                             residents that have not been reported to police?
                         </label>
                         <div class="col-md-4">
@@ -179,7 +179,7 @@
                     <!-- Multiple Checkboxes (inline) -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="pizza_deliveries">
-                            Do pizza drivers deliver to the property?
+                            Do pizza drivers deliver to the property at night?
                         </label>
                         <div class="col-md-4">
                             <label class="checkbox-inline" for="pizza_deliveries-0">
@@ -215,6 +215,28 @@
                                 <input type="radio" name="taxi_services_nights"
                                        id="taxi_services_nights-1" value="0"
                                        {{ ($property['taxi_services_nights'] == '0' ? 'checked' : '') }}>
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes (inline) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="tow_trucks">
+                            Do tow trucks come to property at night?
+                        </label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" for="tow_trucks-0">
+                                <input type="radio" name="tow_trucks"
+                                       id="tow_trucks-0"
+                                       value="1"
+                                        {{ ($property['tow_trucks'] == '1' ? 'checked' : '') }}>
+                                Yes
+                            </label>
+                            <label class="checkbox-inline" for="tow_trucks-1">
+                                <input type="radio" name="tow_trucks"
+                                       id="tow_trucks-1" value="0"
+                                        {{ ($property['tow_trucks'] == '0' ? 'checked' : '') }}>
                                 No
                             </label>
                         </div>
