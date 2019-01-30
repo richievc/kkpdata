@@ -235,8 +235,8 @@
                             </label>
                             <label class="checkbox-inline" for="tow_trucks-1">
                                 <input type="radio" name="tow_trucks"
-                                       id="tow_trucks-1" value="0"
-                                        {{ ($property['tow_trucks'] == '0' ? 'checked' : '') }}>
+                                    id="tow_trucks-1" value="0"
+                                    {{ ($property['tow_trucks'] == '0' ? 'checked' : '') }}>
                                 No
                             </label>
                         </div>
