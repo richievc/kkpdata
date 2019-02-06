@@ -62,7 +62,7 @@
                             </div>
                         @endif
 
-                        <table class="table" id="example3" >
+                        <table class="table table-bordered table-striped display dataTable" id="crudTable" >
                             <thead>
                             <tr>
                                 <th>Property</th>
