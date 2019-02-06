@@ -61,23 +61,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="radios">Registration Type</label>
-                            <div class="col-md-4">
-                                <div class="radio">
-                                    <label for="regtype">
-                                        <input name="regtype" id="regtype-0" value="manager" checked="checked" type="radio">
-                                        I am a GuideWell Group facility manager.
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="regtype-1">
-                                        <input name="regtype" id="regtype-1" value="security" type="radio">
-                                        I am a member of the GuideWell Group corporate security team.
-                                    </label>
-                                </div>
+                            <label class="col-md-4 control-label" for="company">Company</label>
+                            <div class="col-md-6">
+                                <select name="company" id="company" class="form-control">
+                                    <option value="richmond">Richmond</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-md-4 control-label">Contact Phone</label>
 
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" required>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

@@ -47,6 +47,7 @@
                             <th>Company</th>
                             <th>Point of Contact</th>
                             <th>POC Phone</th>
+                            <th>Total</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -57,11 +58,14 @@
                         @else
                             @foreach($accounts as $account)
                                 <tr>
-                                    <th>{{ $account['company'] }}</th>
-                                    <th>{{ $account['name'] }}</th>
-                                    <th>{{ $account['phone'] }}</th>
-                                    <th>{{ $account['total'] }}</th>
-                                    <th><i class="fa fa-edit"> </i> <i class="fa fa-trash text-danger"> </i></th>
+                                    <td>{{ $account->company }}</td>
+                                    <td>{{ $account->name }}</td>
+                                    <td>{{ $account->phone }}</td>
+                                    <td></td>
+                                    <td style="text-align: right">
+                                        <a href="" class="btn btn-sm"><i class="fa fa-edit"> </i></a>
+                                        <a href="" class="btn btn-sm"><i class="fa fa-trash text-danger"> </i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif

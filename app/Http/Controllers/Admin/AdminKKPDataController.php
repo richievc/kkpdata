@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use DB;
 use App\User;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class AdminKKPDataController extends Controller
      */
     public function index() {
 
-        $users = User::all();
+        $users = DB::table('users')->paginate(10);
 
         $data['accounts'] = $users;
         return view('admin/kkpdata/index', $data);

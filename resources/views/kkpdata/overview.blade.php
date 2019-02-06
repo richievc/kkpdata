@@ -37,7 +37,8 @@
                             </div>
                         @endif
                         <div class="alert alert-success">
-                            <i class="fa fa-check"></i> Thank you for entering the data required
+                            <i class="fa fa-check"></i> Thank you for filling out the Property Manager’s Pre-Survey Information Questionnaire.
+                            <a href="{{ url('home') }}">Back Dashboard</a>
                         </div>
 
 

@@ -29,7 +29,7 @@ class KKPDataController extends Controller
         $user = Auth::user();
 
         if($user->hasRole('Manager')) {
-            return redirect('kkpdata/home');
+            return redirect('home');
         }
 
         $data['properties'] = PropertyModel::where('user_id', $user->id)->get();
