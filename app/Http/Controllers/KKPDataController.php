@@ -247,7 +247,7 @@ class KKPDataController extends Controller
         $property->save();
 
         \Session::flash('success-msg', 'Data was save successfully');
-        return redirect()->to('kkpdata/survey/documents/' . $request->id);
+        return redirect()->to('kkpdata/survey/complete_overview/' . $request->id);
     }
 
     public function process_step4(Request $request) {

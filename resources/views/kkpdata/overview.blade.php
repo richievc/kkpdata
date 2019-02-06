@@ -36,9 +36,8 @@
                                 </ul>
                             </div>
                         @endif
-                        <div class="alert alert-warning">
-                            This area will show an HTML overview of the document with the option to save as PDF
-                            Estimated time to complete 24hrs
+                        <div class="alert alert-success">
+                            <i class="fa fa-check"></i> Thank you for entering the data required
                         </div>
 
 

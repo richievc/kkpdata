@@ -37,14 +37,14 @@
                     @endif
 
                     <a href="kkpdata/create_account">
-                        <button class="btn btn-primary"  style="margin-bottom:20px" id="create_account">Create Account</button>
+                        <button class="btn btn-primary"  style="margin-bottom:20px"
+                                id="create_account">Create Account</button>
                     </a>
 
                     <table class="table" id="example3" >
                         <thead>
                         <tr>
-                            <th>Facility</th>
-                            <th>Main Telephone</th>
+                            <th>Company</th>
                             <th>Point of Contact</th>
                             <th>POC Phone</th>
                             <th>Actions</th>
@@ -53,23 +53,15 @@
                         <tbody>
 
                         @if(count($accounts) < 1)
-                            <div class="alert alert-danger">No Accounts Found</div>
+                            <div class="alert alert-danger">No Rows found</div>
                         @else
-
-                            @foreach ($accounts as $data)
+                            @foreach($accounts as $account)
                                 <tr>
-                                    <td>{{$data->facility}}</td>
-                                    <td>{{$data->main_phone}}</td>
-                                    <td>{{($data->is_point_of_contact == 0 ? $data->your_name : $data->point_of_contact_name)}}</td>
-                                    <td>{{($data->is_point_of_contact == 0 ? $data->your_phone : $data->point_of_contact_phone)}}</td>
-                                    <td>
-                                        <a href="{{url('admin/kkpdata/edit/' . $data->id)}}" class="btn btn-xs btn-default">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </a>
-                                        <a href="{{url('admin/kkpdata/delete/' . $data->id)}}" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-edit"></i> Delete
-                                        </a>
-                                    </td>
+                                    <th>{{ $account['company'] }}</th>
+                                    <th>{{ $account['name'] }}</th>
+                                    <th>{{ $account['phone'] }}</th>
+                                    <th>{{ $account['total'] }}</th>
+                                    <th><i class="fa fa-edit"> </i> <i class="fa fa-trash text-danger"> </i></th>
                                 </tr>
                             @endforeach
                         @endif

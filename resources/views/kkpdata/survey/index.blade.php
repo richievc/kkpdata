@@ -19,7 +19,7 @@
                         <li class="list-group-item"><a href="{{ url('/kkpdata/survey/background/' . (!isset($property) ? '' : $property->id)) }}">Background Information</a></li>
                         <li class="list-group-item"><a href="{{ url('/kkpdata/survey/property/' . (!isset($property) ? '' : $property->id)) }}">Property Detail</a></li>
                         <li class="list-group-item"><a href="{{ url('/kkpdata/survey/environmental/' . (!isset($property) ? '' : $property->id)) }}">Environmental Risk Concerns</a></li>
-                        <li class="list-group-item"><a href="{{ url('/kkpdata/survey/documents/' . (!isset($property) ? '' : $property->id)) }}">Documents</a></li>
+                        {{--<li class="list-group-item"><a href="{{ url('/kkpdata/survey/documents/' . (!isset($property) ? '' : $property->id)) }}">Documents</a></li>--}}
                     </ul>
                 </div>
                 <div class="col-md-9">
