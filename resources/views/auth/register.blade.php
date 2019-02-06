@@ -64,7 +64,7 @@
                             <label class="col-md-4 control-label" for="company">Company</label>
                             <div class="col-md-6">
                                 <select name="company" id="company" class="form-control">
-                                    <option value="richmond">Richmond</option>
+                                    <option value="richman">Richman Property</option>
                                 </select>
                             </div>
                         </div>
