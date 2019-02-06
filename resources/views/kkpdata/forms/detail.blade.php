@@ -30,7 +30,7 @@
 
                     <!-- Multiple Checkboxes (inline) -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="excepts_hud">Excepts Hud/Section 8</label>
+                        <label class="col-md-4 control-label" for="excepts_hud">Hud/Section 8?</label>
                         <div class="col-md-4">
                             <label class="checkbox-inline" for="excepts_hud-0">
                                 <input type="radio" name="excepts_hud" id="excepts_hud-0" value="1"
@@ -38,7 +38,7 @@
                                 Yes
                             </label>
                             <label class="checkbox-inline" for="excepts_hud-1">
-                                <input type="radio" name="excepts_hud" id="excepts_hud-1" value="no"
+                                <input type="radio" name="excepts_hud" id="excepts_hud-1" value="0"
                                         {{ (@$property['excepts_hud'] == 0 ? 'checked' : '') }}>
                                 No
                             </label>

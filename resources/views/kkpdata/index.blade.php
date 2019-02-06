@@ -89,7 +89,7 @@
                                             <a href="{{ url('/kkpdata/survey/background/' . $data->id) }}" class="btn btn-xs btn-default">
                                                 <i class="fa fa-edit"></i> Edit
                                             </a>
-                                            <a href="#delete-survey" class="btn btn-xs btn-danger" data-toggle="modal">
+                                            <a href="#delete-survey" class="btn btn-xs btn-danger" id="{{ $data->id }}" data-toggle="modal">
                                                 <i class="fa fa-trash"></i> Delete
                                             </a>
                                         </td>
@@ -101,8 +101,24 @@
                         </table>
 
                     </div>
-                    <div class="grid-footer">
-
+                    <div class="modal modal-danger fade" tabindex="-1" id="delete-survey" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete Survey</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> Are you sure you want to delete this survey.</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger">DELETE</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ class AddTowTrucksField extends Migration
     public function up()
     {
         Schema::table('properties', function (Blueprint $table) {
-            $table->boolean('tow_trucks')->nullable();
+            $table->string('tow_trucks', 75)->nullable();
         });
     }
 
