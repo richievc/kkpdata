@@ -1,14 +1,18 @@
-<?php
+<?php namespace App\Http\Controllers;
+/**
+ * @desc:       KKPData Property Survey Application
+ * @version:    1.0.0
+ * @author:     richievc
+ */
 
-namespace App\Http\Controllers;
-
-use App\PropertyModel;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\KKPDataModel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\Auth;
+
+use App\PropertyModel;
+use App\Models\KKPDataModel;
 
 class KKPDataController extends Controller
 {
@@ -27,11 +31,7 @@ class KKPDataController extends Controller
     public function index() {
 
         $user = Auth::user();
-
-
-
         $data['properties'] = PropertyModel::where('user_id', $user->id)->get();
-
 
         $data['account']    = $user;
         $data['section']    = null;
@@ -39,6 +39,10 @@ class KKPDataController extends Controller
         return view('kkpdata/index', $data);
     }
 
+    /**
+     * @Todo;
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function beginSurvey() {
 
         return redirect('kkpdata/survey/background');

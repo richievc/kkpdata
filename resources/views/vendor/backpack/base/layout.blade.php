@@ -39,6 +39,7 @@
 
     <!-- BackPack Base CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/backpack/backpack.base.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     @yield('after_styles')
 

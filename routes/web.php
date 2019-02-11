@@ -41,20 +41,27 @@ Route::get('kkpdata/survey/remove_file/{id}/{file}', 'KKPDataController@removeFi
 
 /********************************************************************
  * Admin Controllers
- * ellsa torres-baez
  *
- * Richman Property Services
  */
 
-Route::group ([ 'middleware' => 'admin' ], function () {
 
-    // Taxonomy
-    CRUD::resource('admin/taxonomy', 'Admin\TaxonomyCrudController');
+Route::namespace('Admin')->group(function () {
 
-	Route::get ( 'admin/profile', 'Admin\AdminProfileController@show' );
+        /**
+         * Taxonomy Routes        *
+         */
+        CRUD::resource('admin/taxonomy', 'TaxonomyCrudController');
 
+        /**
+         * Profile Routes
+         */
+        Route::get ( 'admin/profile', 'AdminProfileController@show' );
 
-    Route::get ( 'admin/kkpdata', 'Admin\AdminKKPDataController@index' );
+        /**
+         * kkpdata Routes        *
+         */
+        Route::get ( 'admin/kkpdata',               'AdminKKPDataController@getCompanyListTable' );
+        Route::get ( 'admin/kkpdata/orders/{id}',   'AdminKKPDataController@getCompanyOrdersTable' );
 
 });
 

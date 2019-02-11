@@ -184,7 +184,8 @@ return [
     	'Backpack\NewsCRUD\NewsCRUDServiceProvider',
     	'Backpack\MenuCRUD\MenuCRUDServiceProvider',
         'Backpack\MenuCRUD\MenuCRUDServiceProvider',
-    	/*
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

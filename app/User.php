@@ -9,20 +9,18 @@ use Backpack\CRUD\CrudTrait;            // <------------------------------- this
 use Spatie\Permission\Traits\HasRoles;  // <---------------------- and this one
 
 
-
 class User extends Authenticatable
 {
     use Notifiable;
-    use CrudTrait; // <----- this
-    use HasRoles; // <------ and this
-
+    use CrudTrait;  // <----- add this
+    use HasRoles;   // <------ and this
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'company', 'phone'
     ];
 
     /**
