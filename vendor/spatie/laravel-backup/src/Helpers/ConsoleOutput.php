@@ -15,7 +15,11 @@ class ConsoleOutput
         $this->output = $output;
     }
 
-    public function __call(string $method, array $arguments)
+    /**
+     * @param string $method
+     * @param array  $arguments
+     */
+    public function __call($method, array $arguments)
     {
         $consoleOutput = app(static::class);
 

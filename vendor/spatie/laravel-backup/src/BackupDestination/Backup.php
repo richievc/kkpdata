@@ -7,37 +7,52 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 
 class Backup
 {
-    /** @var \Illuminate\Contracts\Filesystem\Filesystem */
+    /** @var \Spatie\Backup\BackupDestination\Disk */
     protected $disk;
 
     /** @var string */
     protected $path;
 
-    public function __construct(Filesystem $disk, string $path)
+    /**
+     * @param \Illuminate\Contracts\Filesystem\Filesystem $disk
+     * @param string                                      $path
+     */
+    public function __construct(Filesystem $disk, $path)
     {
         $this->disk = $disk;
         $this->path = $path;
     }
 
-    public function path(): string
+    /**
+     * @return string
+     */
+    public function path()
     {
         return $this->path;
     }
 
-    public function exists(): bool
+    /**
+     * @return bool
+     */
+    public function exists()
     {
         return $this->disk->exists($this->path);
     }
 
-    public function date(): Carbon
+    /**
+     * @return \Carbon\Carbon
+     */
+    public function date()
     {
         return Carbon::createFromTimestamp($this->disk->lastModified($this->path));
     }
 
     /**
      * Get the size in bytes.
+     *
+     * @return int
      */
-    public function size(): int
+    public function size()
     {
         if (! $this->exists()) {
             return 0;
@@ -52,6 +67,6 @@ class Backup
     public function delete()
     {
         $this->disk->delete($this->path);
-        consoleOutput()->info("Deleted backup `{$this->path}`.");
+        consoleOutput()->info("Deleted backup {$this->path}.");
     }
 }

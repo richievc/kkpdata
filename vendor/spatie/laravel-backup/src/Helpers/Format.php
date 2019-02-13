@@ -6,7 +6,12 @@ use Carbon\Carbon;
 
 class Format
 {
-    public static function humanReadableSize(int $sizeInBytes): string
+    /**
+     * @param int $sizeInBytes
+     *
+     * @return string
+     */
+    public static function getHumanReadableSize($sizeInBytes)
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
@@ -20,16 +25,26 @@ class Format
         return round($sizeInBytes, 2).' '.$units[$i];
     }
 
-    public static function emoji(bool $bool): string
+    /**
+     * @param bool $bool
+     *
+     * @return string
+     */
+    public static function getEmoji($bool)
     {
         if ($bool) {
-            return '✅';
+            return "\xe2\x9c\x85";
         }
 
-        return '❌';
+        return "\xe2\x9d\x8c";
     }
 
-    public static function ageInDays(Carbon $date): string
+    /**
+     * @param \Carbon\Carbon $date
+     *
+     * @return string
+     */
+    public static function ageInDays(Carbon $date)
     {
         return number_format(round($date->diffInMinutes() / (24 * 60), 2), 2).' ('.$date->diffForHumans().')';
     }

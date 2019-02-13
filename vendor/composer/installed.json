@@ -2145,75 +2145,6 @@
         ]
     },
     {
-        "name": "doctrine/inflector",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/inflector.git",
-            "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-            "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.2"
-        },
-        "time": "2017-07-22T12:18:28+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "inflection",
-            "pluralize",
-            "singularize",
-            "string"
-        ]
-    },
-    {
         "name": "laravel/framework",
         "version": "v5.4.36",
         "version_normalized": "5.4.36.0",
@@ -2562,60 +2493,6 @@
             "dbal",
             "persistence",
             "queryobject"
-        ]
-    },
-    {
-        "name": "cviebrock/eloquent-sluggable",
-        "version": "4.2.5",
-        "version_normalized": "4.2.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-            "reference": "814e6c91bfdac9744cc3fae2f752daee36aff2d1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/814e6c91bfdac9744cc3fae2f752daee36aff2d1",
-            "reference": "814e6c91bfdac9744cc3fae2f752daee36aff2d1",
-            "shasum": ""
-        },
-        "require": {
-            "cocur/slugify": "^2.3",
-            "illuminate/config": "~5.4.0",
-            "illuminate/database": "~5.4.0",
-            "illuminate/support": "~5.4.0",
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "^0.9.4",
-            "orchestra/database": "~3.4.0",
-            "orchestra/testbench": "~3.4.0",
-            "phpunit/phpunit": "~5.7"
-        },
-        "time": "2017-09-05T14:59:20+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Cviebrock\\EloquentSluggable\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Colin Viebrock",
-                "email": "colin@viebrock.ca"
-            }
-        ],
-        "description": "Easy creation of slugs for your Eloquent models in Laravel 5.",
-        "homepage": "https://github.com/cviebrock/eloquent-sluggable",
-        "keywords": [
-            "eloquent",
-            "laravel",
-            "slug"
         ]
     },
     {
@@ -3363,247 +3240,6 @@
         "keywords": [
             "MenuCRUD",
             "backpack"
-        ]
-    },
-    {
-        "name": "spatie/temporary-directory",
-        "version": "1.1.4",
-        "version_normalized": "1.1.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/spatie/temporary-directory.git",
-            "reference": "5e1799fa2297363ebfb4df296fea90afbd4ef9b7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/5e1799fa2297363ebfb4df296fea90afbd4ef9b7",
-            "reference": "5e1799fa2297363ebfb4df296fea90afbd4ef9b7",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.3"
-        },
-        "time": "2018-04-12T09:34:43+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Spatie\\TemporaryDirectory\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Alex Vanderbist",
-                "email": "alex@spatie.be",
-                "homepage": "https://spatie.be",
-                "role": "Developer"
-            }
-        ],
-        "description": "Easily create, use and destroy temporary directories",
-        "homepage": "https://github.com/spatie/temporary-directory",
-        "keywords": [
-            "spatie",
-            "temporary-directory"
-        ]
-    },
-    {
-        "name": "spatie/db-dumper",
-        "version": "2.12.0",
-        "version_normalized": "2.12.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/spatie/db-dumper.git",
-            "reference": "61cf73e3b53e163d6e888a0013b9df6bb235752c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/spatie/db-dumper/zipball/61cf73e3b53e163d6e888a0013b9df6bb235752c",
-            "reference": "61cf73e3b53e163d6e888a0013b9df6bb235752c",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0",
-            "symfony/process": "^3.0|^4.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.0"
-        },
-        "time": "2018-12-10T10:41:18+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Spatie\\DbDumper\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Freek Van der Herten",
-                "email": "freek@spatie.be",
-                "homepage": "https://spatie.be",
-                "role": "Developer"
-            }
-        ],
-        "description": "Dump databases",
-        "homepage": "https://github.com/spatie/db-dumper",
-        "keywords": [
-            "database",
-            "db-dumper",
-            "dump",
-            "mysqldump",
-            "spatie"
-        ]
-    },
-    {
-        "name": "spatie/laravel-backup",
-        "version": "4.19.2",
-        "version_normalized": "4.19.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/spatie/laravel-backup.git",
-            "reference": "a7a93d52eb73a43ce1c4b8672b42e4871805bede"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/a7a93d52eb73a43ce1c4b8672b42e4871805bede",
-            "reference": "a7a93d52eb73a43ce1c4b8672b42e4871805bede",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/console": "~5.3.28|~5.4.0",
-            "illuminate/contracts": "~5.3.28|~5.4.0",
-            "illuminate/events": "~5.3.28|~5.4.0",
-            "illuminate/filesystem": "~5.3.28|~5.4.0",
-            "illuminate/notifications": "~5.3.28|~5.4.0",
-            "illuminate/support": "~5.3.28|~5.4.0",
-            "league/flysystem": "^1.0.27",
-            "php": "^7.0",
-            "spatie/db-dumper": "^2.6",
-            "spatie/temporary-directory": "^1.1",
-            "symfony/finder": "^3.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "^0.9.5",
-            "orchestra/testbench": "~3.3.3|~3.4.0",
-            "phpunit/phpunit": "^5.3.0"
-        },
-        "suggest": {
-            "guzzlehttp/guzzle": "Allows notifications to be sent via Slack"
-        },
-        "time": "2017-08-29T09:13:19+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Spatie\\Backup\\BackupServiceProvider"
-                ]
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Spatie\\Backup\\": "src"
-            },
-            "files": [
-                "src/Helpers/functions.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Freek Van der Herten",
-                "email": "freek@spatie.be",
-                "homepage": "https://spatie.be",
-                "role": "Developer"
-            }
-        ],
-        "description": "A Laravel 5 package to backup your application",
-        "homepage": "https://github.com/spatie/laravel-backup",
-        "keywords": [
-            "backup",
-            "database",
-            "laravel-backup",
-            "spatie"
-        ]
-    },
-    {
-        "name": "backpack/backupmanager",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Laravel-Backpack/BackupManager.git",
-            "reference": "b4e9272e5abff228e45dd9fe2ad492fb33eab4a0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Laravel-Backpack/BackupManager/zipball/b4e9272e5abff228e45dd9fe2ad492fb33eab4a0",
-            "reference": "b4e9272e5abff228e45dd9fe2ad492fb33eab4a0",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/support": "~5.1",
-            "php": ">=5.3.0",
-            "spatie/laravel-backup": "^4.19"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*",
-            "scrutinizer/ocular": "~1.1"
-        },
-        "time": "2017-08-30T19:40:26+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            },
-            "laravel": {
-                "providers": [
-                    "Backpack\\BackupManager\\BackupManagerServiceProvider"
-                ]
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Backpack\\BackupManager\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Cristian Tabacitu",
-                "email": "hello@tabacitu.ro",
-                "homepage": "http://tabacitu.ro",
-                "role": "Chief Architect & Web Developer"
-            }
-        ],
-        "description": "Admin interface for managing backups in Backpack, on Laravel 5.2+",
-        "homepage": "https://github.com/laravel-backpack/BackupManager",
-        "keywords": [
-            "backpack",
-            "backup",
-            "backupmanager",
-            "dick",
-            "laravel",
-            "tabacitu",
-            "updivision"
         ]
     },
     {
@@ -4409,73 +4045,6 @@
         ]
     },
     {
-        "name": "mockery/mockery",
-        "version": "0.9.10",
-        "version_normalized": "0.9.10.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mockery/mockery.git",
-            "reference": "4876fc0c7d9e5da49712554a35c94d84ed1e9ee5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mockery/mockery/zipball/4876fc0c7d9e5da49712554a35c94d84ed1e9ee5",
-            "reference": "4876fc0c7d9e5da49712554a35c94d84ed1e9ee5",
-            "shasum": ""
-        },
-        "require": {
-            "hamcrest/hamcrest-php": "~1.1",
-            "lib-pcre": ">=7.0",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2018-11-13T20:50:16+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.9.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Mockery": "library/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Pádraic Brady",
-                "email": "padraic.brady@gmail.com",
-                "homepage": "http://blog.astrumfutura.com"
-            },
-            {
-                "name": "Dave Marshall",
-                "email": "dave.marshall@atstsolutions.co.uk",
-                "homepage": "http://davedevelopment.co.uk"
-            }
-        ],
-        "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-        "homepage": "http://github.com/padraic/mockery",
-        "keywords": [
-            "BDD",
-            "TDD",
-            "library",
-            "mock",
-            "mock objects",
-            "mockery",
-            "stub",
-            "test",
-            "test double",
-            "testing"
-        ]
-    },
-    {
         "name": "phpunit/php-file-iterator",
         "version": "1.4.5",
         "version_normalized": "1.4.5.0",
@@ -4522,57 +4091,6 @@
         "keywords": [
             "filesystem",
             "iterator"
-        ]
-    },
-    {
-        "name": "phpunit/php-token-stream",
-        "version": "2.0.2",
-        "version_normalized": "2.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-            "reference": "791198a2c6254db10131eecfe8c06670700904db"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/791198a2c6254db10131eecfe8c06670700904db",
-            "reference": "791198a2c6254db10131eecfe8c06670700904db",
-            "shasum": ""
-        },
-        "require": {
-            "ext-tokenizer": "*",
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.2.4"
-        },
-        "time": "2017-11-27T05:48:46+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Wrapper around PHP's tokenizer extension.",
-        "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
-        "keywords": [
-            "tokenizer"
         ]
     },
     {
@@ -4683,59 +4201,6 @@
             "reflection",
             "static analysis"
         ]
-    },
-    {
-        "name": "phpdocumentor/reflection-docblock",
-        "version": "4.3.0",
-        "version_normalized": "4.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-            "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
-            "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0",
-            "phpdocumentor/reflection-common": "^1.0.0",
-            "phpdocumentor/type-resolver": "^0.4.0",
-            "webmozart/assert": "^1.0"
-        },
-        "require-dev": {
-            "doctrine/instantiator": "~1.0.5",
-            "mockery/mockery": "^1.0",
-            "phpunit/phpunit": "^6.4"
-        },
-        "time": "2017-11-30T07:14:17+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "phpDocumentor\\Reflection\\": [
-                    "src/"
-                ]
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mike van Riel",
-                "email": "me@mikevanriel.com"
-            }
-        ],
-        "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
     },
     {
         "name": "phpspec/prophecy",
@@ -4992,59 +4457,6 @@
         ],
         "description": "File manager for web",
         "homepage": "http://elfinder.org"
-    },
-    {
-        "name": "nikic/php-parser",
-        "version": "v4.2.0",
-        "version_normalized": "4.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-            "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-            "shasum": ""
-        },
-        "require": {
-            "ext-tokenizer": "*",
-            "php": ">=7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.5 || ^7.0"
-        },
-        "time": "2019-01-12T16:31:37+00:00",
-        "bin": [
-            "bin/php-parse"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "PhpParser\\": "lib/PhpParser"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Nikita Popov"
-            }
-        ],
-        "description": "A PHP parser written in PHP",
-        "keywords": [
-            "parser",
-            "php"
-        ]
     },
     {
         "name": "vlucas/phpdotenv",
@@ -6028,5 +5440,531 @@
         ],
         "description": "Symfony Yaml Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "spatie/db-dumper",
+        "version": "1.5.1",
+        "version_normalized": "1.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/db-dumper.git",
+            "reference": "efdf41891a9dd4bb63fb6253044c9e51f34fff41"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/db-dumper/zipball/efdf41891a9dd4bb63fb6253044c9e51f34fff41",
+            "reference": "efdf41891a9dd4bb63fb6253044c9e51f34fff41",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.5|^7.0",
+            "symfony/process": "^2.7|^3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8"
+        },
+        "time": "2016-06-14T13:23:01+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\DbDumper\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Dump databases",
+        "homepage": "https://github.com/spatie/db-dumper",
+        "keywords": [
+            "database",
+            "db-dumper",
+            "dump",
+            "mysqldump",
+            "spatie"
+        ]
+    },
+    {
+        "name": "doctrine/inflector",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/inflector.git",
+            "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+            "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2015-11-06T14:35:42+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Inflector\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "inflection",
+            "pluralize",
+            "singularize",
+            "string"
+        ]
+    },
+    {
+        "name": "spatie/laravel-backup",
+        "version": "3.11.0",
+        "version_normalized": "3.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/laravel-backup.git",
+            "reference": "2382532ce52e3929ccb0e930539d14dfd09d22eb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/2382532ce52e3929ccb0e930539d14dfd09d22eb",
+            "reference": "2382532ce52e3929ccb0e930539d14dfd09d22eb",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/console": "~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+            "illuminate/filesystem": "~5.1.20|~5.2.0|~5.3.0|~5.4.0",
+            "illuminate/support": "~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+            "league/flysystem": "^1.0.8",
+            "php": "^5.5|^7.0",
+            "spatie/db-dumper": "^1.3",
+            "symfony/finder": "^2.7|^3.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.4",
+            "orchestra/testbench": "^3.2",
+            "phpunit/phpunit": "^4.8"
+        },
+        "suggest": {
+            "irazasyed/telegram-bot-sdk": "Allows notifications to be sent using Telegram Bot",
+            "maknz/slack": "Allows notifications to be sent via Slack"
+        },
+        "time": "2017-02-18T09:54:12+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\Backup\\": "src"
+            },
+            "files": [
+                "src/Helpers/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "A Laravel 5 package to backup your application",
+        "homepage": "https://github.com/spatie/laravel-backup",
+        "keywords": [
+            "backup",
+            "database",
+            "laravel-backup",
+            "spatie"
+        ]
+    },
+    {
+        "name": "backpack/backupmanager",
+        "version": "1.1.18",
+        "version_normalized": "1.1.18.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Laravel-Backpack/BackupManager.git",
+            "reference": "798e5e5ed4a7a8be116aff4d1cb26dc0f0a59b9a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Laravel-Backpack/BackupManager/zipball/798e5e5ed4a7a8be116aff4d1cb26dc0f0a59b9a",
+            "reference": "798e5e5ed4a7a8be116aff4d1cb26dc0f0a59b9a",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.1",
+            "php": ">=5.3.0",
+            "spatie/laravel-backup": "^3.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*",
+            "scrutinizer/ocular": "~1.1"
+        },
+        "time": "2017-07-06T05:34:38+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Backpack\\BackupManager\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cristian Tabacitu",
+                "email": "hello@tabacitu.ro",
+                "homepage": "http://tabacitu.ro",
+                "role": "Chief Architect & Web Developer"
+            }
+        ],
+        "description": "Admin interface for managing backups in Backpack, on Laravel 5.2+",
+        "homepage": "https://github.com/laravel-backpack/BackupManager",
+        "keywords": [
+            "backpack",
+            "backup",
+            "backupmanager",
+            "dick",
+            "laravel",
+            "tabacitu",
+            "updivision"
+        ]
+    },
+    {
+        "name": "mockery/mockery",
+        "version": "0.9.11",
+        "version_normalized": "0.9.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mockery/mockery.git",
+            "reference": "be9bf28d8e57d67883cba9fcadfcff8caab667f8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mockery/mockery/zipball/be9bf28d8e57d67883cba9fcadfcff8caab667f8",
+            "reference": "be9bf28d8e57d67883cba9fcadfcff8caab667f8",
+            "shasum": ""
+        },
+        "require": {
+            "hamcrest/hamcrest-php": "~1.1",
+            "lib-pcre": ">=7.0",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2019-02-12T16:07:13+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.9.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mockery": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Pádraic Brady",
+                "email": "padraic.brady@gmail.com",
+                "homepage": "http://blog.astrumfutura.com"
+            },
+            {
+                "name": "Dave Marshall",
+                "email": "dave.marshall@atstsolutions.co.uk",
+                "homepage": "http://davedevelopment.co.uk"
+            }
+        ],
+        "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+        "homepage": "http://github.com/padraic/mockery",
+        "keywords": [
+            "BDD",
+            "TDD",
+            "library",
+            "mock",
+            "mock objects",
+            "mockery",
+            "stub",
+            "test",
+            "test double",
+            "testing"
+        ]
+    },
+    {
+        "name": "cviebrock/eloquent-sluggable",
+        "version": "4.2.4",
+        "version_normalized": "4.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cviebrock/eloquent-sluggable.git",
+            "reference": "ae888987b7ee72366b44caf579861de99e3e8d42"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/ae888987b7ee72366b44caf579861de99e3e8d42",
+            "reference": "ae888987b7ee72366b44caf579861de99e3e8d42",
+            "shasum": ""
+        },
+        "require": {
+            "cocur/slugify": "^2.3",
+            "illuminate/config": "^5.4",
+            "illuminate/database": "^5.4",
+            "illuminate/support": "^5.4",
+            "php": ">=5.6.4 || ^7.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.4",
+            "orchestra/database": "~3.4",
+            "orchestra/testbench": "^3.4",
+            "phpunit/phpunit": "~5.7"
+        },
+        "time": "2017-07-04T14:15:50+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Cviebrock\\EloquentSluggable\\ServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cviebrock\\EloquentSluggable\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Colin Viebrock",
+                "email": "colin@viebrock.ca"
+            }
+        ],
+        "description": "Easy creation of slugs for your Eloquent models in Laravel 5.",
+        "homepage": "https://github.com/cviebrock/eloquent-sluggable",
+        "keywords": [
+            "eloquent",
+            "laravel",
+            "slug"
+        ]
+    },
+    {
+        "name": "phpunit/php-token-stream",
+        "version": "1.4.12",
+        "version_normalized": "1.4.12.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-token-stream.git",
+            "reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/1ce90ba27c42e4e44e6d8458241466380b51fa16",
+            "reference": "1ce90ba27c42e4e44e6d8458241466380b51fa16",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.2"
+        },
+        "time": "2017-12-04T08:55:13+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Wrapper around PHP's tokenizer extension.",
+        "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
+        "keywords": [
+            "tokenizer"
+        ]
+    },
+    {
+        "name": "nikic/php-parser",
+        "version": "v3.1.5",
+        "version_normalized": "3.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
+            "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0|~5.0"
+        },
+        "time": "2018-02-28T20:30:58+00:00",
+        "bin": [
+            "bin/php-parse"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpParser\\": "lib/PhpParser"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Nikita Popov"
+            }
+        ],
+        "description": "A PHP parser written in PHP",
+        "keywords": [
+            "parser",
+            "php"
+        ]
+    },
+    {
+        "name": "phpdocumentor/reflection-docblock",
+        "version": "3.3.2",
+        "version_normalized": "3.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+            "reference": "bf329f6c1aadea3299f08ee804682b7c45b326a2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bf329f6c1aadea3299f08ee804682b7c45b326a2",
+            "reference": "bf329f6c1aadea3299f08ee804682b7c45b326a2",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0",
+            "phpdocumentor/reflection-common": "^1.0.0",
+            "phpdocumentor/type-resolver": "^0.4.0",
+            "webmozart/assert": "^1.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.4",
+            "phpunit/phpunit": "^4.4"
+        },
+        "time": "2017-11-10T14:09:06+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "phpDocumentor\\Reflection\\": [
+                    "src/"
+                ]
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mike van Riel",
+                "email": "me@mikevanriel.com"
+            }
+        ],
+        "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
     }
 ]

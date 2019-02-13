@@ -2,7 +2,6 @@
 
 namespace Spatie\Backup\Tasks\Backup;
 
-use Illuminate\Support\Collection;
 use Symfony\Component\Finder\Finder;
 
 class FileSelection
@@ -21,7 +20,7 @@ class FileSelection
      *
      * @return \Spatie\Backup\Tasks\Backup\FileSelection
      */
-    public static function create($includeFilesAndDirectories = []): FileSelection
+    public static function create($includeFilesAndDirectories = [])
     {
         return new static($includeFilesAndDirectories);
     }
@@ -29,9 +28,9 @@ class FileSelection
     /**
      * @param array|string $includeFilesAndDirectories
      */
-    public function __construct($includeFilesAndDirectories = [])
+    public function __construct($includeFilesAndDirectories)
     {
-        $this->includeFilesAndDirectories = collect($includeFilesAndDirectories);
+        $this->includeFilesAndDirectories = $this->sanitize($includeFilesAndDirectories);
 
         $this->excludeFilesAndDirectories = collect();
     }
@@ -43,9 +42,9 @@ class FileSelection
      *
      * @return \Spatie\Backup\Tasks\Backup\FileSelection
      */
-    public function excludeFilesFrom($excludeFilesAndDirectories): FileSelection
+    public function excludeFilesFrom($excludeFilesAndDirectories)
     {
-        $this->excludeFilesAndDirectories = $this->excludeFilesAndDirectories->merge($this->sanitize($excludeFilesAndDirectories));
+        $this->excludeFilesAndDirectories = $this->sanitize($excludeFilesAndDirectories);
 
         return $this;
     }
@@ -57,7 +56,7 @@ class FileSelection
      *
      * @return \Spatie\Backup\Tasks\Backup\FileSelection
      */
-    public function shouldFollowLinks(bool $shouldFollowLinks): FileSelection
+    public function shouldFollowLinks($shouldFollowLinks)
     {
         $this->shouldFollowLinks = $shouldFollowLinks;
 
@@ -65,12 +64,12 @@ class FileSelection
     }
 
     /**
-     * @return \Generator|string[]
+     * @return Generator|string
      */
-    public function selectedFiles()
+    public function getSelectedFiles()
     {
         if ($this->includeFilesAndDirectories->isEmpty()) {
-            return [];
+            return;
         }
 
         $finder = (new Finder())
@@ -82,15 +81,11 @@ class FileSelection
             $finder->followLinks();
         }
 
+        $finder->in($this->includedDirectories());
+
         foreach ($this->includedFiles() as $includedFile) {
             yield $includedFile;
         }
-
-        if (! count($this->includedDirectories())) {
-            return;
-        }
-
-        $finder->in($this->includedDirectories());
 
         foreach ($finder->getIterator() as $file) {
             if ($this->shouldExclude($file)) {
@@ -101,24 +96,35 @@ class FileSelection
         }
     }
 
-    protected function includedFiles(): array
+    /**
+     * @return array
+     */
+    protected function includedFiles()
     {
         return $this->includeFilesAndDirectories->filter(function ($path) {
             return is_file($path);
         })->toArray();
     }
 
-    protected function includedDirectories(): array
+    /**
+     * @return array
+     */
+    protected function includedDirectories()
     {
         return $this->includeFilesAndDirectories->reject(function ($path) {
             return is_file($path);
         })->toArray();
     }
 
-    protected function shouldExclude(string $path): bool
+    /**
+     * @param string $path
+     *
+     * @return bool
+     */
+    protected function shouldExclude($path)
     {
         foreach ($this->excludeFilesAndDirectories as $excludedPath) {
-            if (starts_with(realpath($path), $excludedPath)) {
+            if (starts_with($path, $excludedPath)) {
                 return true;
             }
         }
@@ -127,15 +133,15 @@ class FileSelection
     }
 
     /**
-     * @param string|array $paths
+     * @param $paths
      *
      * @return \Illuminate\Support\Collection
      */
-    protected function sanitize($paths): Collection
+    protected function sanitize($paths)
     {
         return collect($paths)
             ->reject(function ($path) {
-                return $path === '';
+                return $path == '';
             })
             ->flatMap(function ($path) {
                 return glob($path);

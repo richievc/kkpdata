@@ -12,19 +12,28 @@ class Period
     /** @var \Carbon\Carbon */
     protected $endDate;
 
+    /**
+     * @param \Carbon\Carbon $startDate
+     * @param \Carbon\Carbon $endDate
+     */
     public function __construct(Carbon $startDate, Carbon $endDate)
     {
         $this->startDate = $startDate;
-
         $this->endDate = $endDate;
     }
 
-    public function startDate(): Carbon
+    /**
+     * @return \Carbon\Carbon
+     */
+    public function getStartDate()
     {
         return $this->startDate->copy();
     }
 
-    public function endDate(): Carbon
+    /**
+     * @return \Carbon\Carbon
+     */
+    public function getEndDate()
     {
         return $this->endDate->copy();
     }

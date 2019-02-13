@@ -2,13 +2,18 @@
 
 namespace Spatie\Backup\Events;
 
+use Spatie\Backup\Tasks\Backup\Zip;
+
 class BackupZipWasCreated
 {
-    /** @var string */
-    public $pathToZip;
+    /** @var \Spatie\Backup\Tasks\Backup\Zip */
+    public $zip;
 
-    public function __construct(string $pathToZip)
+    /**
+     * @param \Spatie\Backup\Tasks\Backup\Zip $zip
+     */
+    public function __construct(Zip $zip)
     {
-        $this->pathToZip = $pathToZip;
+        $this->zip = $zip;
     }
 }

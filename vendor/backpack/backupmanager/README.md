@@ -24,7 +24,7 @@ An admin interface for managing backups (download and delete). Used in the Backp
 $ composer require backpack/backupmanager
 ```
 
-2) For Laravel <5.5, add the service providers to your config/app.php file:
+2) Then add the service providers to your config/app.php file:
 
 ```
 Spatie\Backup\BackupServiceProvider::class,
@@ -72,7 +72,7 @@ protected function schedule(Schedule $schedule)
 
 If the "unknown error" yellow bubble is thrown and you see the "_Backup failed because The dump process failed with exitcode 127 : Command not found._" error in the log file, either mysqldump / pg_dump is not installed or you need to specify its location.
 
-You can do that in your config/database.php file, where you define your database credentials, by adding the dump variables. Example for Mac OS X's MAMP:
+You can do that in your config/database.php file, where you define your database credentials, by adding the _dump_command_path_ variable. Example for Mac OS X's MAMP:
 
 ```php
 'mysql' => [
@@ -86,13 +86,9 @@ You can do that in your config/database.php file, where you define your database
             'prefix'            => '',
             'strict'            => false,
             'engine'            => null,
-            'dump' => [
-               'dump_binary_path' => '/Applications/MAMP/Library/bin/', // only the path, so without `mysqldump` or `pg_dump`; this is a working example from MAMP on Mac OS
-               'use_single_transaction',
-               'timeout' => 60 * 5, // 5 minute timeout
-               // 'exclude_tables' => ['table1', 'table2'],
-               // 'add_extra_option' => '--optionname=optionvalue',
-            ]
+            'dump_command_path' => '/Applications/MAMP/Library/bin/', // only the path, so without 'mysqldump' or 'pg_dump'
+            'dump_command_timeout' => 60 * 5, // 5 minute timeout
+            'dump_using_single_transaction' => true, // perform dump using a single transaction
         ],
 ```
 
@@ -101,11 +97,6 @@ You can do that in your config/database.php file, where you define your database
 Point and click, baby. Point and click.
 
 Try at **your-project-domain/admin/backup**
-
-
-## Upgrading from 1.1.x to 1.2.x
-
-The only breaking change is that the ```config/database.php``` dump variables are now inside an array. Please see the step 8 above, copy-paste the ```dump``` array from there and customize.
 
 
 ## Change log
@@ -142,4 +133,4 @@ Please **[subscribe to the Backpack Newsletter](http://eepurl.com/bUEGjf)** so y
 
 ## License
 
-Backpack is free for non-commercial use and 39 EUR/project for commercial use. Please see [License File](LICENSE.md) and [backpackforlaravel.com](https://backpackforlaravel.com/#pricing) for more information.
+Backpack is free for non-commercial use and $19/project for commercial use. Please see [License File](LICENSE.md) and [backpackforlaravel.com](https://backpackforlaravel.com/#pricing) for more information.

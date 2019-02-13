@@ -17,16 +17,14 @@ class CleanupJob
     /** @var \Spatie\Backup\Tasks\Cleanup\Strategies\CleanupStrategy */
     protected $strategy;
 
-    /** @var bool */
-    protected $sendNotifications = true;
-
-    public function __construct(Collection $backupDestinations, CleanupStrategy $strategy, bool $disableNotifications)
+    /**
+     * @param \Illuminate\Support\Collection               $backupDestinations
+     * @param \Spatie\Backup\Tasks\Cleanup\CleanupStrategy $strategy
+     */
+    public function __construct(Collection $backupDestinations, CleanupStrategy $strategy)
     {
         $this->backupDestinations = $backupDestinations;
-
         $this->strategy = $strategy;
-
-        $this->sendNotifications = ! $disableNotifications;
     }
 
     public function run()
@@ -34,28 +32,21 @@ class CleanupJob
         $this->backupDestinations->each(function (BackupDestination $backupDestination) {
             try {
                 if (! $backupDestination->isReachable()) {
-                    throw new Exception("Could not connect to disk {$backupDestination->diskName()} because: {$backupDestination->connectionError()}");
+                    throw new Exception("Could not connect to disk {$backupDestination->getDiskName()} because: {$backupDestination->getConnectionError()}");
                 }
 
-                consoleOutput()->info("Cleaning backups of {$backupDestination->backupName()} on disk {$backupDestination->diskName()}...");
+                consoleOutput()->info("Cleaning backups of {$backupDestination->getBackupName()} on disk {$backupDestination->getDiskName()}...");
 
-                $this->strategy->deleteOldBackups($backupDestination->backups());
-                $this->sendNotification(new CleanupWasSuccessful($backupDestination));
+                $this->strategy->deleteOldBackups($backupDestination->getBackups());
+                event(new CleanupWasSuccessful($backupDestination));
 
-                $usedStorage = Format::humanReadableSize($backupDestination->usedStorage());
+                $usedStorage = Format::getHumanReadableSize($backupDestination->getUsedStorage());
                 consoleOutput()->info("Used storage after cleanup: {$usedStorage}.");
             } catch (Exception $exception) {
                 consoleOutput()->error("Cleanup failed because: {$exception->getMessage()}.");
 
-                $this->sendNotification(new CleanupHasFailed($exception));
+                event(new CleanupHasFailed($exception));
             }
         });
-    }
-
-    protected function sendNotification($notification)
-    {
-        if ($this->sendNotifications) {
-            event($notification);
-        }
     }
 }

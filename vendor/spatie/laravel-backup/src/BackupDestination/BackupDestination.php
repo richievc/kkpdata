@@ -6,7 +6,6 @@ use Exception;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Contracts\Filesystem\Filesystem;
-use Spatie\Backup\Exceptions\InvalidBackupDestination;
 
 class BackupDestination
 {
@@ -22,10 +21,12 @@ class BackupDestination
     /** @var Exception */
     public $connectionError;
 
-    /** @var null|\Spatie\Backup\BackupDestination\BackupCollection */
-    protected $backupCollectionCache = null;
-
-    public function __construct(Filesystem $disk = null, string $backupName, string $diskName)
+    /**
+     * @param \Illuminate\Contracts\Filesystem\Filesystem|null $disk
+     * @param string                                           $backupName
+     * @param string                                           $diskName
+     */
+    public function __construct(Filesystem $disk = null, $backupName, $diskName)
     {
         $this->disk = $disk;
 
@@ -34,17 +35,18 @@ class BackupDestination
         $this->backupName = preg_replace('/[^a-zA-Z0-9.]/', '-', $backupName);
     }
 
-    public function disk(): Filesystem
-    {
-        return $this->disk;
-    }
-
-    public function diskName(): string
+    /**
+     * @return string
+     */
+    public function getDiskName()
     {
         return $this->diskName;
     }
 
-    public function filesystemType(): string
+    /**
+     * @return string
+     */
+    public function getFilesystemType()
     {
         if (is_null($this->disk)) {
             return 'unknown';
@@ -57,7 +59,13 @@ class BackupDestination
         return strtolower($filesystemType);
     }
 
-    public static function create(string $diskName, string $backupName): BackupDestination
+    /**
+     * @param string $diskName
+     * @param string $backupName
+     *
+     * @return \Spatie\Backup\BackupDestination\BackupDestination
+     */
+    public static function create($diskName, $backupName)
     {
         try {
             $disk = app(Factory::class)->disk($diskName);
@@ -72,10 +80,13 @@ class BackupDestination
         }
     }
 
-    public function write(string $file)
+    /**
+     * @param string $file
+     */
+    public function write($file)
     {
         if (is_null($this->disk)) {
-            throw InvalidBackupDestination::diskNotSet();
+            throw new Exception("Could not connect to disk {$this->diskName} because the disk is not set.");
         }
 
         $destination = $this->backupName.'/'.pathinfo($file, PATHINFO_BASENAME);
@@ -83,37 +94,41 @@ class BackupDestination
         $handle = fopen($file, 'r+');
 
         $this->disk->getDriver()->writeStream($destination, $handle);
-
-        if (is_resource($handle)) {
-            fclose($handle);
-        }
     }
 
-    public function backupName(): string
+    /**
+     * @return string
+     */
+    public function getBackupName()
     {
         return $this->backupName;
     }
 
-    public function backups(): BackupCollection
+    /**
+     * @return \Spatie\Backup\BackupDestination\BackupCollection
+     */
+    public function getBackups()
     {
-        if ($this->backupCollectionCache) {
-            return $this->backupCollectionCache;
-        }
+        $files = $this->isReachable() ? $this->disk->allFiles($this->backupName) : [];
 
-        $files = is_null($this->disk) ? [] : $this->disk->allFiles($this->backupName);
-
-        return $this->backupCollectionCache = BackupCollection::createFromFiles(
+        return BackupCollection::createFromFiles(
             $this->disk,
             $files
         );
     }
 
-    public function connectionError(): Exception
+    /**
+     * @return \Exception
+     */
+    public function getConnectionError()
     {
         return $this->connectionError;
     }
 
-    public function isReachable(): bool
+    /**
+     * @return bool
+     */
+    public function isReachable()
     {
         if (is_null($this->disk)) {
             return false;
@@ -130,30 +145,32 @@ class BackupDestination
         }
     }
 
-    public function usedStorage(): int
+    /**
+     * Return the used storage in bytes.
+     *
+     * @return int
+     */
+    public function getUsedStorage()
     {
-        return $this->backups()->size();
+        return $this->getBackups()->size();
     }
 
     /**
      * @return \Spatie\Backup\BackupDestination\Backup|null
      */
-    public function newestBackup()
+    public function getNewestBackup()
     {
-        return $this->backups()->newest();
+        return $this->getBackups()->newest();
     }
 
     /**
-     * @return \Spatie\Backup\BackupDestination\Backup|null
+     * @param \Carbon\Carbon $date
+     *
+     * @return bool
      */
-    public function oldestBackup()
+    public function isNewestBackupOlderThan(Carbon $date)
     {
-        return $this->backups()->oldest();
-    }
-
-    public function newestBackupIsOlderThan(Carbon $date): bool
-    {
-        $newestBackup = $this->newestBackup();
+        $newestBackup = $this->getNewestBackup();
 
         if (is_null($newestBackup)) {
             return true;
