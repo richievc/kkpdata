@@ -483,6 +483,7 @@ class ComposerStaticInit1927a8a0c7fe4a438cb3cd2b32fc0a4b
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminProfileController.php',
         'App\\Http\\Controllers\\Admin\\AdminKKPDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminKKPDataController.php',
+        'App\\Http\\Controllers\\Admin\\AdminPDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminPDFController.php',
         'App\\Http\\Controllers\\Admin\\TaxonomyCrudController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TaxonomyCrudController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',

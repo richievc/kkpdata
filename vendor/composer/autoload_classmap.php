@@ -17,6 +17,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminProfileController' => $baseDir . '/app/Http/Controllers/Admin/AdminProfileController.php',
     'App\\Http\\Controllers\\Admin\\AdminKKPDataController' => $baseDir . '/app/Http/Controllers/Admin/AdminKKPDataController.php',
+    'App\\Http\\Controllers\\Admin\\AdminPDFController' => $baseDir . '/app/Http/Controllers/Admin/AdminPDFController.php',
     'App\\Http\\Controllers\\Admin\\TaxonomyCrudController' => $baseDir . '/app/Http/Controllers/Admin/TaxonomyCrudController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
