@@ -44,7 +44,6 @@ Route::get('kkpdata/survey/remove_file/{id}/{file}', 'KKPDataController@removeFi
  *
  */
 
-
 Route::namespace('Admin')->group(function () {
 
         /**
@@ -62,6 +61,11 @@ Route::namespace('Admin')->group(function () {
          */
         Route::get ( 'admin/kkpdata',               'AdminKKPDataController@getCompanyListTable' );
         Route::get ( 'admin/kkpdata/orders/{id}',   'AdminKKPDataController@getCompanyOrdersTable' );
+        Route::get ( 'admin/kkpdata/pdf/{id}',      'AdminPDFController@BuildPDF' );
+
+
+
+
 
 });
 

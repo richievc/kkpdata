@@ -52,7 +52,7 @@
                                     <td>{{ $property->state }}</td>
                                     <td>{{ $property->zip }}</td>
                                     <td style="text-align: right">
-                                        <a href="{{ url('admin/kkpdata/orders/' . $property->id) }}" data-toggle="tooltip" title="See All Orders" class="btn btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ url('admin/kkpdata/pdf/' . $property->id) }}" data-toggle="tooltip" title="Download PDF" class="btn btn-sm"><i class="fa fa-file-pdf-o"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

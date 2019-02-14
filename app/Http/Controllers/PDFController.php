@@ -12,8 +12,7 @@ use Codedge\Fpdf\Fpdf\FPDF;
 class PDFController extends Controller
 {
 
-	
-	public function BuildPDF(FPDF $fpdf, $id) {
+/*public function BuildPDF(FPDF $fpdf, $id) {
 		$data = KKPDataModel::find($id);
 		
 		// We'll be outputting a PDF
@@ -569,7 +568,20 @@ class PDFController extends Controller
 		
 		
 		$fpdf->Output();
-	}
+	}*/
+
+    public function BuildPDF(FPDF $fpdf, $id) {
+        $data = KKPDataModel::find($id);
+
+        // We'll be outputting a PDF
+        header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+        header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 	// Date in the past
+        header('Content-Type: application/pdf');
+        $fpdf->AddPage();
+
+
+        $fpdf->Output();
+    }
 	
 	
 	
