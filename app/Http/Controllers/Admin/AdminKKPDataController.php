@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use APp\User;
 use App\PropertyModel;
 use Illuminate\Http\Request;
-use APp\USer;
 use App\Http\Controllers\Controller;
 
 class AdminKKPDataController extends Controller
