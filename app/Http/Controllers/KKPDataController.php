@@ -188,13 +188,6 @@ class KKPDataController extends Controller
         $property->manager_name                     = $request->manager_name;
         $property->manager_phone                    = $request->manager_phone;
         $property->manager_email                    = $request->manager_email;
-        $property->demographic_composition          = $request->demographic_composition;
-        $property->level_of_unemployment            = $request->level_of_unemployment;
-        $property->police_jurisdiction              = $request->police_jurisdiction;
-        $property->district_zone                    = $request->district_zone;
-        $property->police_crime_prevention_officers = $request->police_crime_prevention_officers;
-        $property->crime_free_housing_certification = $request->crime_free_housing_certification;
-        $property->tax_credit                       = $request->tax_credit;
 
         $property->save();
 
@@ -210,12 +203,19 @@ class KKPDataController extends Controller
 
         $property = PropertyModel::where('id', $request->id)->get()->first();
 
-        $property->num_of_units         = $request->num_of_units;
-        $property->num_of_residents     = $request->num_of_residents;
-        $property->excepts_hud          = $request->excepts_hud;
-        $property->turnover_rate        = $request->turnover_rate;
-        $property->rental_fee_start     = $request->rental_fee_start;
-        $property->rental_fee_end       = $request->rental_fee_end;
+        $property->num_of_units                     = $request->num_of_units;
+        $property->num_of_residents                 = $request->num_of_residents;
+        $property->excepts_hud                      = $request->excepts_hud;
+        $property->turnover_rate                    = $request->turnover_rate;
+        $property->tax_credit                       = $request->tax_credit;
+        $property->rental_fee_start                 = $request->rental_fee_start;
+        $property->rental_fee_end                   = $request->rental_fee_end;
+        $property->police_jurisdiction              = $request->police_jurisdiction;
+        $property->district_zone                    = $request->district_zone;
+        $property->crime_free_housing_certification = $request->crime_free_housing_certification;
+        $property->demographic_composition          = $request->demographic_composition;
+        $property->level_of_unemployment            = $request->level_of_unemployment;
+        $property->police_crime_prevention_officers = $request->police_crime_prevention_officers;
 
         $property->save();
 

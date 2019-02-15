@@ -64,6 +64,16 @@
 
                     <!-- Text input-->
                     <div class="form-group">
+                        <label class="col-md-4 control-label" for="turnover_rate">Resident Turnover Rate (%): </label>
+                        <div class="col-md-4">
+                            <input id="turnover_rate" name="turnover_rate" type="number" value="{{@$property['turnover_rate']}}" class="form-control input-md">
+                        </div>
+                    </div>
+
+
+
+                    <!-- Text input-->
+                    <div class="form-group">
                         <label class="col-md-4 control-label" for="rental_fee_start">Rental Fee Range ($ per month): </label>
                         <div class="col-md-2">
                             <input id="rental_fee_start"
