@@ -50,12 +50,12 @@
                         <label class="col-md-4 control-label" for="tax_credit">Tax Credit?  </label>
                         <div class="col-md-4">
                             <label class="checkbox-inline" for="tax_credit-0">
-                                <input type="radio" name="tax_credit" id="tax_credit-0" value="yes"
+                                <input type="radio" name="tax_credit" id="tax_credit-0" value="1"
                                         {{ (@$property['tax_credit'] == 1 ? 'checked' : '') }}>
                                 Yes
                             </label>
                             <label class="checkbox-inline" for="tax_credit-1">
-                                <input type="radio" name="tax_credit" id="tax_credit-1" value="no"
+                                <input type="radio" name="tax_credit" id="tax_credit-1" value="0"
                                         {{ (@$property['tax_credit'] == 0 ? 'checked' : '') }}>
                                 No
                             </label>
